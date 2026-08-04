@@ -29,7 +29,35 @@ const material = new THREE.MeshStandardMaterial({
 const cube = new THREE.Mesh(geometry, material);
 
 scene.add(cube);
+// Campo de estrellas
 
+const starsGeometry = new THREE.BufferGeometry();
+
+const starCount = 5000;
+
+const starPositions = [];
+
+for (let i = 0; i < starCount; i++) {
+
+    starPositions.push((Math.random() - 0.5) * 400);
+    starPositions.push((Math.random() - 0.5) * 400);
+    starPositions.push((Math.random() - 0.5) * 400);
+
+}
+
+starsGeometry.setAttribute(
+    "position",
+    new THREE.Float32BufferAttribute(starPositions, 3)
+);
+
+const starsMaterial = new THREE.PointsMaterial({
+    color: 0xffffff,
+    size: 0.4
+});
+
+const stars = new THREE.Points(starsGeometry, starsMaterial);
+
+scene.add(stars);
 // Luces
 const light = new THREE.PointLight(0xffffff, 5);
 light.position.set(5, 5, 5);
