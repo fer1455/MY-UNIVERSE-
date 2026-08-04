@@ -1,4 +1,4 @@
-alert("MAIN.JS FUNCIONANDO");
+alert("SCRIPT.JS FUNCIONANDO");
 
 // Escena
 const scene = new THREE.Scene();
