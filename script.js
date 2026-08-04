@@ -31,11 +31,11 @@ renderer.setClearColor(0x000010);
 // Galaxia espiral
 const galaxyGeometry = new THREE.BufferGeometry();
 
-const galaxyCount = 12000;
+const galaxyCount = 25000;
 const positions = [];
 
 const arms = 5;
-const radius = 8;
+const radius = 12;
 
 for (let i = 0; i < galaxyCount; i++) {
 
@@ -46,7 +46,7 @@ for (let i = 0; i < galaxyCount; i++) {
 
     positions.push(
         Math.cos(angle) * r + (Math.random() - 0.5) * 0.3,
-        (Math.random() - 0.5) * 0.2,
+        (Math.random() - 0.5) * r * 0.25,
         Math.sin(angle) * r + (Math.random() - 0.5) * 0.3
     );
 
@@ -84,7 +84,7 @@ function animate(){
 
     requestAnimationFrame(animate);
 
-    stars.rotation.y += 0.0005;
+    stars.rotation.y += 0.00012;
 stars.rotation.x += 0.0001;
 
 galaxyCore.rotation.y += 0.002;;
