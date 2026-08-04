@@ -1,4 +1,3 @@
-alert("MAIN.JS ACTUALIZADO");
 // Escena
 const scene = new THREE.Scene();
 
@@ -81,11 +80,9 @@ const coreGeometry = new THREE.SphereGeometry(
     32
 );
 
-const starsMaterial = new THREE.PointsMaterial({
-    color: 0xffffff,
-    size: 0.2
+const coreMaterial = new THREE.MeshBasicMaterial({
+    color: 0xff66cc
 });
-
 
 const core = new THREE.Mesh(
     coreGeometry,
