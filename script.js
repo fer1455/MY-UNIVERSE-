@@ -88,6 +88,13 @@ function animate(){
 stars.rotation.x += 0.0001;
 
 galaxyCore.rotation.y += 0.002;;
+    const pulse = 1 + Math.sin(Date.now() * 0.003) * 0.15;
+
+galaxyCore.scale.set(
+    pulse,
+    pulse,
+    pulse
+);
     renderer.render(
         scene,
         camera
