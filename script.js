@@ -102,6 +102,7 @@ const galaxyCore = new THREE.Mesh(
 );
 
 scene.add(galaxyCore);
+
 // =======================
 // HALO DE LUZ
 // =======================
