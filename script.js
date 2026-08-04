@@ -59,7 +59,16 @@ const stars = new THREE.Points(
 );
 
 scene.add(stars);
+// Núcleo de la galaxia
+const coreGeometry = new THREE.SphereGeometry(0.25, 32, 32);
 
+const coreMaterial = new THREE.MeshBasicMaterial({
+    color: 0xff66cc
+});
+
+const galaxyCore = new THREE.Mesh(coreGeometry, coreMaterial);
+
+scene.add(galaxyCore);
 
 // Animación
 function animate(){
@@ -67,7 +76,7 @@ function animate(){
     requestAnimationFrame(animate);
 
     stars.rotation.y += 0.001;
-
+galaxyCore.rotation.y += 0.002;
     renderer.render(
         scene,
         camera
