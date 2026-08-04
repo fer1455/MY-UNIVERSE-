@@ -12,7 +12,7 @@ const camera = new THREE.PerspectiveCamera(
     1000
 );
 
-camera.position.z = 5;
+camera.position.z = 10;
 
 // Renderizador
 const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -21,9 +21,9 @@ document.body.appendChild(renderer.domElement);
 
 // Núcleo de la galaxia
 
-const galaxyCoreGeometry = new THREE.SphereGeometry(1.5, 64, 64);
+const galaxyCoreGeometry = new THREE.SphereGeometry(3, 64, 64);
 
-const galaxyCoreMaterial = new THREE.MeshBasicMaterial({
+const galaxyCoreMaterial = new THREE.MeshPhongMaterial({
     color: 0xff66cc
 });
 
