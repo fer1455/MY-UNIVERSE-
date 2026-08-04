@@ -153,8 +153,15 @@ galaxy.rotation.x = Math.sin(Date.now() * 0.0002) * 0.15;
 galaxyCore.scale.x = 1 + Math.sin(Date.now() * 0.003) * 0.08;
 galaxyCore.scale.y = galaxyCore.scale.x;
 galaxyCore.scale.z = galaxyCore.scale.x;
-    glow.rotation.y += 0.001;
+    glow.rotation.y += 0.0005;
 
+const glowScale = 1 + Math.sin(Date.now() * 0.0025) * 0.15;
+
+glow.scale.set(
+    glowScale,
+    glowScale,
+    glowScale
+);
 const glowScale = 1 + Math.sin(Date.now() * 0.002) * 0.15;
 
 glow.scale.set(
