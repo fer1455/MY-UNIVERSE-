@@ -122,6 +122,43 @@ const glow = new THREE.Mesh(
 
 scene.add(glow);
 // =======================
+// PARTÍCULAS DEL NÚCLEO
+// =======================
+
+const orbitGeometry = new THREE.BufferGeometry();
+
+const orbitPositions = [];
+
+for (let i = 0; i < 600; i++) {
+
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 0.8 + Math.random() * 1.2;
+
+    orbitPositions.push(
+        Math.cos(angle) * distance,
+        (Math.random() - 0.5) * 0.3,
+        Math.sin(angle) * distance
+    );
+
+}
+
+orbitGeometry.setAttribute(
+    "position",
+    new THREE.Float32BufferAttribute(orbitPositions, 3)
+);
+
+const orbitMaterial = new THREE.PointsMaterial({
+    color: 0xff99dd,
+    size: 0.035
+});
+
+const orbitParticles = new THREE.Points(
+    orbitGeometry,
+    orbitMaterial
+);
+
+scene.add(orbitParticles);
+// =======================
 // REDIMENSIONAR
 // =======================
 
@@ -161,6 +198,8 @@ glow.scale.set(
     glowScale,
     glowScale,
     glowScale
+    orbitParticles.rotation.y += 0.004;
+orbitParticles.rotation.x += 0.0005;
 );
 const glowScale = 1 + Math.sin(Date.now() * 0.002) * 0.15;
 
