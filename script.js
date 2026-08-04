@@ -79,8 +79,8 @@ function animate() {
 
     requestAnimationFrame(animate);
 
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
+    galaxyCore.rotation.y += 0.01;
+galaxyCore.rotation.x += 0.005;
 stars.rotation.y += 0.0003;
     renderer.render(scene, camera);
 
