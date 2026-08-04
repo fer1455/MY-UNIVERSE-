@@ -91,7 +91,7 @@ const core = new THREE.Mesh(
 );
 
 scene.add(core);
-
+core.scale.set(5, 5, 5);
 
 // Animación
 function animate(){
