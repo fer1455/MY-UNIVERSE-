@@ -112,7 +112,9 @@ function animate(){
 
 
 animate();
-
+setTimeout(() => {
+    document.getElementById("loading").style.display = "none";
+}, 3000);
 
 // Ajuste de pantalla
 window.addEventListener(
