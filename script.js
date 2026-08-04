@@ -39,9 +39,9 @@ const starPositions = [];
 
 for (let i = 0; i < starCount; i++) {
 
-    starPositions.push((Math.random() - 0.5) * 400);
-    starPositions.push((Math.random() - 0.5) * 400);
-    starPositions.push((Math.random() - 0.5) * 400);
+    starPositions.push((Math.random() - 0.5) * 40);
+starPositions.push((Math.random() - 0.5) * 40);
+starPositions.push((Math.random() - 0.5) * 40);
 
 }
 
@@ -52,7 +52,8 @@ starsGeometry.setAttribute(
 
 const starsMaterial = new THREE.PointsMaterial({
     color: 0xffffff,
-    size: 0.4
+    size: 2
+});
 });
 
 const stars = new THREE.Points(starsGeometry, starsMaterial);
