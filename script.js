@@ -103,6 +103,24 @@ const galaxyCore = new THREE.Mesh(
 
 scene.add(galaxyCore);
 // =======================
+// HALO DE LUZ
+// =======================
+
+const glowGeometry = new THREE.SphereGeometry(0.9, 32, 32);
+
+const glowMaterial = new THREE.MeshBasicMaterial({
+    color: 0xff66cc,
+    transparent: true,
+    opacity: 0.18
+});
+
+const glow = new THREE.Mesh(
+    glowGeometry,
+    glowMaterial
+);
+
+scene.add(glow);
+// =======================
 // REDIMENSIONAR
 // =======================
 
@@ -134,6 +152,15 @@ galaxy.rotation.x = Math.sin(Date.now() * 0.0002) * 0.15;
 galaxyCore.scale.x = 1 + Math.sin(Date.now() * 0.003) * 0.08;
 galaxyCore.scale.y = galaxyCore.scale.x;
 galaxyCore.scale.z = galaxyCore.scale.x;
+    glow.rotation.y += 0.001;
+
+const glowScale = 1 + Math.sin(Date.now() * 0.002) * 0.15;
+
+glow.scale.set(
+    glowScale,
+    glowScale,
+    glowScale
+);
     renderer.render(
         scene,
         camera
