@@ -3,46 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🫶🏻 MY UNIVERSE 🤍</title>
-
+    <title>Para el amor de mi vida</title>
     <link rel="stylesheet" href="style.css">
-
-    <script async src="https://unpkg.com/es-module-shims@1.10.0/dist/es-module-shims.js"></script>
-
-    <script type="importmap">
-    {
-      "imports": {
-        "three": "https://unpkg.com/three@0.170.0/build/three.module.js"
-      }
-    }
-    </script>
 </head>
 
 <body>
 
-<div id="loading">
-    <h1>🫶🏻 MY UNIVERSE 🥺</h1>
-    <p>Cargando nuestro universo...🤍</p>
-</div>
-<script>
-setTimeout(() => {
-    document.getElementById("loading").style.display = "none";
-}, 3000);
-</script>
-<div id="ui">
-    <h1>🫶🏻 MY UNIVERSE 🥺</h1>
-    <h2>∞ INFINITY 🤍</h2>
+    <canvas id="galaxy"></canvas>
 
-    <div id="mensaje">
-        Toca una foto 🤍
+    <div class="card">
+        <h1>Para el amor de mi vida ❤️</h1>
+        <p>
+            Este pequeño universo lo hice con mucho cariño para ti.
+        </p>
+
+        <button id="open">
+            Abrir sorpresa ✨
+        </button>
+
+        <div id="message">
+            Siempre estarás en mi corazón 💖
+        </div>
     </div>
-</div>
 
-<audio id="musica" loop>
-    <source src="music/diewithasmile.mp3" type="audio/mpeg">
-</audio>
-
-<script type="module" src="main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="main.js"></script>
 
 </body>
 </html>
