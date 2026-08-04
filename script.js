@@ -110,5 +110,9 @@ const button = document.getElementById("open");
 const message = document.getElementById("message");
 
 button.onclick = () => {
-    message.style.display = "block";
+
+    message.classList.add("show");
+
+    button.style.display = "none";
+
 };
