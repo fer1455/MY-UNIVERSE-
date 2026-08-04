@@ -25,19 +25,24 @@ document.body.appendChild(renderer.domElement);
 
 
 // Crear estrellas
+// Crear galaxia espiral
 const starsGeometry = new THREE.BufferGeometry();
 
-const starsCount = 6000;
+const starsCount = 8000;
 const positions = [];
 
 for (let i = 0; i < starsCount; i++) {
 
     const radius = Math.random() * 25;
 
-    const angle = Math.random() * Math.PI * 2;
+    const branchAngle = (i % 3) * (Math.PI * 2 / 3);
+
+    const spin = radius * 0.25;
+
+    const angle = branchAngle + spin + (Math.random() - 0.5) * 0.8;
 
     const x = Math.cos(angle) * radius;
-    const y = (Math.random() - 0.5) * 8;
+    const y = (Math.random() - 0.5) * (radius * 0.15);
     const z = Math.sin(angle) * radius;
 
     positions.push(x, y, z);
@@ -55,7 +60,7 @@ starsGeometry.setAttribute(
 
 const starsMaterial = new THREE.PointsMaterial({
     color: 0xffffff,
-    size: 0.08
+    size: 0.06
 });
 
 
