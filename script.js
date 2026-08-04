@@ -19,16 +19,20 @@ const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-// Cubo de prueba
-const geometry = new THREE.BoxGeometry(1.5, 1.5, 1.5);
+// Núcleo de la galaxia
 
-const material = new THREE.MeshStandardMaterial({
+const galaxyCoreGeometry = new THREE.SphereGeometry(1.5, 64, 64);
+
+const galaxyCoreMaterial = new THREE.MeshBasicMaterial({
     color: 0xff66cc
 });
 
-const cube = new THREE.Mesh(geometry, material);
+const galaxyCore = new THREE.Mesh(
+    galaxyCoreGeometry,
+    galaxyCoreMaterial
+);
 
-scene.add(cube);
+scene.add(galaxyCore);
 // Campo de estrellas
 
 const starsGeometry = new THREE.BufferGeometry();
