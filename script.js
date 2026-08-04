@@ -114,6 +114,16 @@ function animate(){
 animate();
 
 setTimeout(() => {
+    const loading = document.getElementById("loading");
+
+    loading.style.opacity = "0";
+
+    setTimeout(() => {
+        loading.style.display = "none";
+    }, 1000);
+
+}, 3000);
+setTimeout(() => {
     document.getElementById("loading").style.display = "none";
 }, 3000);
 
