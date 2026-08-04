@@ -41,7 +41,16 @@ button {
 }
 
 #message {
-    display: none;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
     margin-top: 20px;
-    font-size: 20px;
+    transition: all 0.8s ease;
+    transform: translateY(-20px);
+}
+
+#message.show {
+    max-height: 500px;
+    opacity: 1;
+    transform: translateY(0);
 }
