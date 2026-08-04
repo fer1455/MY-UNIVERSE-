@@ -37,7 +37,66 @@ renderer.setPixelRatio(window.devicePixelRatio);
 // =======================
 
 scene.background = new THREE.Color(0x000010);
+// =======================
+// GALAXIA
+// =======================
 
+const galaxyGeometry = new THREE.BufferGeometry();
+
+const galaxyCount = 15000;
+const galaxyPositions = [];
+
+for (let i = 0; i < galaxyCount; i++) {
+
+    const radius = Math.random() * 10;
+    const spin = radius * 1.8;
+    const branch = (i % 5) * (Math.PI * 2 / 5);
+
+    const randomX = (Math.random() - 0.5) * 0.4;
+    const randomY = (Math.random() - 0.5) * 0.2;
+    const randomZ = (Math.random() - 0.5) * 0.4;
+
+    galaxyPositions.push(
+        Math.cos(branch + spin) * radius + randomX,
+        randomY,
+        Math.sin(branch + spin) * radius + randomZ
+    );
+
+}
+
+galaxyGeometry.setAttribute(
+    "position",
+    new THREE.Float32BufferAttribute(galaxyPositions, 3)
+);
+
+const galaxyMaterial = new THREE.PointsMaterial({
+    color: 0xffccff,
+    size: 0.025
+});
+
+const galaxy = new THREE.Points(
+    galaxyGeometry,
+    galaxyMaterial
+);
+
+scene.add(galaxy);
+
+// =======================
+// NÚCLEO
+// =======================
+
+const coreGeometry = new THREE.SphereGeometry(0.35, 32, 32);
+
+const coreMaterial = new THREE.MeshBasicMaterial({
+    color: 0xff66cc
+});
+
+const galaxyCore = new THREE.Mesh(
+    coreGeometry,
+    coreMaterial
+);
+
+scene.add(galaxyCore);
 // =======================
 // REDIMENSIONAR
 // =======================
@@ -62,6 +121,11 @@ window.addEventListener("resize", () => {
 function animate(){
 
     requestAnimationFrame(animate);
+
+    galaxy.rotation.y += 0.0015;
+    galaxy.rotation.x += 0.0002;
+
+    galaxyCore.rotation.y += 0.003;
 
     renderer.render(
         scene,
