@@ -1,3 +1,5 @@
+alert("MAIN.JS FUNCIONANDO");
+
 // Escena
 const scene = new THREE.Scene();
 
@@ -9,10 +11,12 @@ const camera = new THREE.PerspectiveCamera(
     1000
 );
 
-camera.position.z = 10;
+camera.position.z = 5;
 
-// Renderizador
+
+// Render
 const renderer = new THREE.WebGLRenderer({
+    canvas: document.getElementById("galaxy"),
     antialias: true
 });
 
@@ -20,78 +24,42 @@ renderer.setSize(
     window.innerWidth,
     window.innerHeight
 );
-renderer.setClearColor(0x000000);
-
-document.body.appendChild(renderer.domElement);
 
 
-// Crear estrellas
-// Crear galaxia espiral
-const starsGeometry = new THREE.BufferGeometry();
+// Estrellas
+const geometry = new THREE.BufferGeometry();
 
-const starsCount = 8000;
-const positions = [];
+const vertices = [];
 
-for (let i = 0; i < starsCount; i++) {
+for(let i = 0; i < 2000; i++){
 
-    const radius = Math.random() * 25;
+    vertices.push(
+        (Math.random()-0.5)*20,
+        (Math.random()-0.5)*20,
+        (Math.random()-0.5)*20
+    );
 
-    const branchAngle = (i % 3) * (Math.PI * 2 / 3);
-
-    const spin = radius * 0.25;
-
-    const angle = branchAngle + spin + (Math.random() - 0.5) * 0.8;
-
-    const x = Math.cos(angle) * radius;
-    const y = (Math.random() - 0.5) * (radius * 0.15);
-    const z = Math.sin(angle) * radius;
-
-    positions.push(x, y, z);
 }
 
-
-starsGeometry.setAttribute(
+geometry.setAttribute(
     "position",
-    new THREE.Float32BufferAttribute(
-        positions,
-        3
-    )
+    new THREE.Float32BufferAttribute(vertices,3)
 );
 
 
-const starsMaterial = new THREE.PointsMaterial({
+const material = new THREE.PointsMaterial({
     color: 0xffffff,
-    size: 0.06
+    size: 0.03
 });
 
 
 const stars = new THREE.Points(
-    starsGeometry,
-    starsMaterial
+    geometry,
+    material
 );
-
 
 scene.add(stars);
-console.log("ESTRELLAS CREADAS", stars);
 
-// Núcleo de la galaxia
-const coreGeometry = new THREE.SphereGeometry(
-    2,
-    32,
-    32
-);
-
-const coreMaterial = new THREE.MeshBasicMaterial({
-    color: 0xff66cc
-});
-
-const core = new THREE.Mesh(
-    coreGeometry,
-    coreMaterial
-);
-
-scene.add(core);
-core.scale.set(5, 5, 5);
 
 // Animación
 function animate(){
@@ -99,7 +67,6 @@ function animate(){
     requestAnimationFrame(animate);
 
     stars.rotation.y += 0.001;
-    core.rotation.y += 0.01;
 
     renderer.render(
         scene,
@@ -107,38 +74,14 @@ function animate(){
     );
 }
 
-
 animate();
 
-setTimeout(() => {
-    const loading = document.getElementById("loading");
 
-    loading.style.opacity = "0";
+// Botón sorpresa
 
-    setTimeout(() => {
-        loading.style.display = "none";
-    }, 1000);
+const button = document.getElementById("open");
+const message = document.getElementById("message");
 
-}, 3000);
-setTimeout(() => {
-    document.getElementById("loading").style.display = "none";
-}, 3000);
-
-// Ajuste de pantalla
-window.addEventListener(
-    "resize",
-    () => {
-
-        camera.aspect =
-        window.innerWidth /
-        window.innerHeight;
-
-        camera.updateProjectionMatrix();
-
-        renderer.setSize(
-            window.innerWidth,
-            window.innerHeight
-        );
-
-    }
-);
+button.onclick = () => {
+    message.style.display = "block";
+};
