@@ -20,6 +20,7 @@ renderer.setSize(
     window.innerWidth,
     window.innerHeight
 );
+renderer.setClearColor(0x000000);
 
 document.body.appendChild(renderer.domElement);
 
@@ -71,7 +72,7 @@ const stars = new THREE.Points(
 
 
 scene.add(stars);
-
+console.log("ESTRELLAS CREADAS", stars);
 
 // Núcleo de la galaxia
 const coreGeometry = new THREE.SphereGeometry(
