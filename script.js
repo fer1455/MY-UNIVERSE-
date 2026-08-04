@@ -1,8 +1,5 @@
-import * as THREE from "three";
-
 // Escena
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x000010);
 
 // Cámara
 const camera = new THREE.PerspectiveCamera(
@@ -12,87 +9,119 @@ const camera = new THREE.PerspectiveCamera(
     1000
 );
 
-camera.position.z = 10;
+camera.position.z = 30;
 
 // Renderizador
-const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
-
-// Núcleo de la galaxia
-
-const galaxyCoreGeometry = new THREE.SphereGeometry(3, 64, 64);
-
-const galaxyCoreMaterial = new THREE.MeshPhongMaterial({
-    color: 0xff66cc
+const renderer = new THREE.WebGLRenderer({
+    antialias: true
 });
 
-const galaxyCore = new THREE.Mesh(
-    galaxyCoreGeometry,
-    galaxyCoreMaterial
+renderer.setSize(
+    window.innerWidth,
+    window.innerHeight
 );
 
-scene.add(galaxyCore);
-// Campo de estrellas
+document.body.appendChild(renderer.domElement);
 
+
+// Crear estrellas
 const starsGeometry = new THREE.BufferGeometry();
 
-const starCount = 5000;
+const starsCount = 6000;
+const positions = [];
 
-const starPositions = [];
+for (let i = 0; i < starsCount; i++) {
 
-for (let i = 0; i < starCount; i++) {
+    const radius = Math.random() * 25;
 
-    starPositions.push((Math.random() - 0.5) * 40);
-starPositions.push((Math.random() - 0.5) * 40);
-starPositions.push((Math.random() - 0.5) * 40);
+    const angle = Math.random() * Math.PI * 2;
 
+    const x = Math.cos(angle) * radius;
+    const y = (Math.random() - 0.5) * 8;
+    const z = Math.sin(angle) * radius;
+
+    positions.push(x, y, z);
 }
+
 
 starsGeometry.setAttribute(
     "position",
-    new THREE.Float32BufferAttribute(starPositions, 3)
+    new THREE.Float32BufferAttribute(
+        positions,
+        3
+    )
 );
+
 
 const starsMaterial = new THREE.PointsMaterial({
     color: 0xffffff,
-    size: 2
+    size: 0.08
 });
 
-const stars = new THREE.Points(starsGeometry, starsMaterial);
+
+const stars = new THREE.Points(
+    starsGeometry,
+    starsMaterial
+);
+
 
 scene.add(stars);
-// Luces
-const light = new THREE.PointLight(0xffffff, 5);
-light.position.set(5, 5, 5);
-scene.add(light);
 
-const ambient = new THREE.AmbientLight(0xffffff, 0.5);
-scene.add(ambient);
 
-// Ocultar pantalla de carga
-document.getElementById("loading").classList.add("hidden");
+// Núcleo de la galaxia
+const coreGeometry = new THREE.SphereGeometry(
+    2,
+    32,
+    32
+);
+
+const coreMaterial = new THREE.MeshBasicMaterial({
+    color: 0xff66cc
+});
+
+
+const core = new THREE.Mesh(
+    coreGeometry,
+    coreMaterial
+);
+
+
+scene.add(core);
+
 
 // Animación
-function animate() {
+function animate(){
 
     requestAnimationFrame(animate);
 
-    galaxyCore.rotation.y += 0.01;
-galaxyCore.rotation.x += 0.005;
-stars.rotation.y += 0.0003;
-    renderer.render(scene, camera);
+    stars.rotation.y += 0.001;
+    core.rotation.y += 0.01;
 
+    renderer.render(
+        scene,
+        camera
+    );
 }
+
 
 animate();
 
-// Redimensionar
-window.addEventListener("resize", () => {
 
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
+// Ajuste de pantalla
+window.addEventListener(
+    "resize",
+    () => {
 
-    renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.aspect =
+        window.innerWidth /
+        window.innerHeight;
 
-});
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(
+            window.innerWidth,
+            window.innerHeight
+        );
+
+    }
+);
