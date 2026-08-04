@@ -10,7 +10,7 @@ const camera = new THREE.PerspectiveCamera(
     1000
 );
 
-camera.position.z = 30;
+camera.position.z = 10;
 
 // Renderizador
 const renderer = new THREE.WebGLRenderer({
@@ -81,8 +81,9 @@ const coreGeometry = new THREE.SphereGeometry(
     32
 );
 
-const coreMaterial = new THREE.MeshBasicMaterial({
-    color: 0xff66cc
+const starsMaterial = new THREE.PointsMaterial({
+    color: 0xffffff,
+    size: 0.2
 });
 
 
