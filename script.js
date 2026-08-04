@@ -127,7 +127,7 @@ function animate(){
 
     requestAnimationFrame(animate);
 
-    galaxy.rotation.y += 0.00015;
+    galaxy.rotation.y += 0.00008;
 galaxy.rotation.x = Math.sin(Date.now() * 0.0002) * 0.15;
 
     galaxyCore.rotation.y += 0.003;
