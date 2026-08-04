@@ -89,7 +89,6 @@ const core = new THREE.Mesh(
     coreMaterial
 );
 
-
 scene.add(core);
 
 
