@@ -31,7 +31,7 @@ const geometry = new THREE.BufferGeometry();
 
 const vertices = [];
 
-for(let i = 0; i < 2000; i++){
+for(let i = 0; i < 8000; i++){
 
     vertices.push(
         (Math.random()-0.5)*20,
@@ -49,7 +49,7 @@ geometry.setAttribute(
 
 const material = new THREE.PointsMaterial({
     color: 0xffffff,
-    size: 0.03
+    size: 0.015
 });
 
 
@@ -75,8 +75,10 @@ function animate(){
 
     requestAnimationFrame(animate);
 
-    stars.rotation.y += 0.001;
-galaxyCore.rotation.y += 0.002;
+    stars.rotation.y += 0.0005;
+stars.rotation.x += 0.0001;
+
+galaxyCore.rotation.y += 0.002;;
     renderer.render(
         scene,
         camera
