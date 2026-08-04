@@ -111,6 +111,8 @@ const message = document.getElementById("message");
 
 button.onclick = () => {
 
+    alert("Botón funcionando");
+
     message.classList.add("show");
 
     button.style.display = "none";
