@@ -192,5 +192,22 @@ galaxyCore.scale.y = galaxyCore.scale.x;
 galaxyCore.scale.z = galaxyCore.scale.x;
 
 glow.rotation.y += 0.0005;
+    const glowScale = 1 + Math.sin(Date.now() * 0.0025) * 0.15;
+
+glow.scale.set(
+    glowScale,
+    glowScale,
+    glowScale
+);
+
+orbitParticles.rotation.y += 0.004;
+orbitParticles.rotation.x += 0.0005;
+
+renderer.render(
+    scene,
+    camera
+);
+
+}
 
 animate();
