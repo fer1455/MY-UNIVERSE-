@@ -26,36 +26,43 @@ renderer.setSize(
 );
 
 
-// Estrellas
-const geometry = new THREE.BufferGeometry();
+// Galaxia espiral
+const galaxyGeometry = new THREE.BufferGeometry();
 
-const vertices = [];
+const galaxyCount = 12000;
+const positions = [];
 
-for(let i = 0; i < 8000; i++){
+const arms = 5;
+const radius = 8;
 
-    vertices.push(
-        (Math.random()-0.5)*20,
-        (Math.random()-0.5)*20,
-        (Math.random()-0.5)*20
+for (let i = 0; i < galaxyCount; i++) {
+
+    const r = Math.random() * radius;
+    const arm = (i % arms) * (Math.PI * 2 / arms);
+
+    const angle = arm + r * 0.7;
+
+    positions.push(
+        Math.cos(angle) * r + (Math.random() - 0.5) * 0.3,
+        (Math.random() - 0.5) * 0.2,
+        Math.sin(angle) * r + (Math.random() - 0.5) * 0.3
     );
 
 }
 
-geometry.setAttribute(
+galaxyGeometry.setAttribute(
     "position",
-    new THREE.Float32BufferAttribute(vertices,3)
+    new THREE.Float32BufferAttribute(positions, 3)
 );
 
-
-const material = new THREE.PointsMaterial({
-    color: 0xffffff,
-    size: 0.015
+const galaxyMaterial = new THREE.PointsMaterial({
+    color: 0xffccff,
+    size: 0.02
 });
 
-
 const stars = new THREE.Points(
-    geometry,
-    material
+    galaxyGeometry,
+    galaxyMaterial
 );
 
 scene.add(stars);
