@@ -1,9 +1,15 @@
-alert("SCRIPT.JS FUNCIONANDO");
+alert("SCRIPT NUEVO FUNCIONANDO");
 
-// Escena
+// =======================
+// ESCENA
+// =======================
+
 const scene = new THREE.Scene();
 
-// Cámara
+// =======================
+// CÁMARA
+// =======================
+
 const camera = new THREE.PerspectiveCamera(
     75,
     window.innerWidth / window.innerHeight,
@@ -11,95 +17,57 @@ const camera = new THREE.PerspectiveCamera(
     1000
 );
 
-camera.position.z = 5;
+camera.position.z = 12;
 
+// =======================
+// RENDER
+// =======================
 
-// Render
 const renderer = new THREE.WebGLRenderer({
     canvas: document.getElementById("galaxy"),
     antialias: true
 });
 
-renderer.setSize(
-    window.innerWidth,
-    window.innerHeight
-);
+renderer.setSize(window.innerWidth, window.innerHeight);
 
+renderer.setPixelRatio(window.devicePixelRatio);
 
-// Galaxia espiral
-const galaxyGeometry = new THREE.BufferGeometry();
+// =======================
+// FONDO
+// =======================
 
-const galaxyCount = 12000;
-const positions = [];
+scene.background = new THREE.Color(0x000010);
 
-const arms = 5;
-const radius = 8;
+// =======================
+// REDIMENSIONAR
+// =======================
 
-for (let i = 0; i < galaxyCount; i++) {
+window.addEventListener("resize", () => {
 
-    const r = Math.random() * radius;
-    const arm = (i % arms) * (Math.PI * 2 / arms);
+    camera.aspect = window.innerWidth / window.innerHeight;
 
-    const angle = arm + r * 0.7;
+    camera.updateProjectionMatrix();
 
-    positions.push(
-        Math.cos(angle) * r + (Math.random() - 0.5) * 0.3,
-        (Math.random() - 0.5) * 0.2,
-        Math.sin(angle) * r + (Math.random() - 0.5) * 0.3
+    renderer.setSize(
+        window.innerWidth,
+        window.innerHeight
     );
 
-}
-
-galaxyGeometry.setAttribute(
-    "position",
-    new THREE.Float32BufferAttribute(positions, 3)
-);
-
-const galaxyMaterial = new THREE.PointsMaterial({
-    color: 0xffccff,
-    size: 0.02
 });
 
-const stars = new THREE.Points(
-    galaxyGeometry,
-    galaxyMaterial
-);
+// =======================
+// ANIMACIÓN
+// =======================
 
-scene.add(stars);
-// Núcleo de la galaxia
-const coreGeometry = new THREE.SphereGeometry(0.25, 32, 32);
-
-const coreMaterial = new THREE.MeshBasicMaterial({
-    color: 0xff66cc
-});
-
-const galaxyCore = new THREE.Mesh(coreGeometry, coreMaterial);
-
-scene.add(galaxyCore);
-
-// Animación
 function animate(){
 
     requestAnimationFrame(animate);
 
-    stars.rotation.y += 0.0005;
-stars.rotation.x += 0.0001;
-
-galaxyCore.rotation.y += 0.002;;
     renderer.render(
         scene,
         camera
     );
+
 }
 
 animate();
-
-
-// Botón sorpresa
-
-const button = document.getElementById("open");
-const message = document.getElementById("message");
-
-button.onclick = () => {
-    message.style.display = "block";
-};
