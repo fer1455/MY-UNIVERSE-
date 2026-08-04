@@ -45,17 +45,17 @@ scene.background = new THREE.Color(0x000010);
 
 const galaxyGeometry = new THREE.BufferGeometry();
 
-const galaxyCount = 15000;
+const galaxyCount = 25000;
 const galaxyPositions = [];
 
 for (let i = 0; i < galaxyCount; i++) {
 
-    const radius = Math.random() * 10;
+    const radius = Math.random() * 15;
     const spin = radius * 1.8;
     const branch = (i % 5) * (Math.PI * 2 / 5);
 
     const randomX = (Math.random() - 0.5) * 0.4;
-    const randomY = (Math.random() - 0.5) * 0.2;
+    const randomY = (Math.random() - 0.5) * radius * 0.15;
     const randomZ = (Math.random() - 0.5) * 0.4;
 
     galaxyPositions.push(
@@ -127,8 +127,8 @@ function animate(){
 
     requestAnimationFrame(animate);
 
-    galaxy.rotation.y += 0.0015;
-    galaxy.rotation.x += 0.0002;
+    galaxy.rotation.y += 0.0008;
+galaxy.rotation.x = Math.sin(Date.now() * 0.0002) * 0.15;
 
     galaxyCore.rotation.y += 0.003;
 galaxyCore.scale.x = 1 + Math.sin(Date.now() * 0.003) * 0.08;
