@@ -30,6 +30,9 @@ body {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255,255,255,0.15);
 box-shadow: 0 0 40px rgba(255, 102, 204, 0.25);
+
+    transition: transform 0.8s ease, box-shadow 0.8s ease;
+transform-origin: center;
 }
 
 button {
