@@ -72,8 +72,11 @@ galaxyGeometry.setAttribute(
 );
 
 const galaxyMaterial = new THREE.PointsMaterial({
-    color: 0xffccff,
-    size: 0.025
+    color: 0xffffff,
+    size: 0.02,
+    transparent: true,
+    opacity: 0.9,
+    vertexColors: false
 });
 
 const galaxy = new THREE.Points(
@@ -87,10 +90,10 @@ scene.add(galaxy);
 // NÚCLEO
 // =======================
 
-const coreGeometry = new THREE.SphereGeometry(0.35, 32, 32);
+const coreGeometry = new THREE.SphereGeometry(0.5, 32, 32);
 
 const coreMaterial = new THREE.MeshBasicMaterial({
-    color: 0xff66cc
+    color: 0xff33aa
 });
 
 const galaxyCore = new THREE.Mesh(
