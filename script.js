@@ -1,3 +1,4 @@
+alert("MAIN.JS ACTUALIZADO");
 // Escena
 const scene = new THREE.Scene();
 
