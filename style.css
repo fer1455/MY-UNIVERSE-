@@ -54,3 +54,13 @@ button {
     opacity: 1;
     transform: translateY(0);
 }
+#message h2{
+    color:#ff99dd;
+    margin-bottom:15px;
+}
+
+#message p{
+    margin-top:12px;
+    line-height:1.6;
+    font-size:18px;
+}
