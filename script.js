@@ -131,7 +131,9 @@ function animate(){
     galaxy.rotation.x += 0.0002;
 
     galaxyCore.rotation.y += 0.003;
-
+galaxyCore.scale.x = 1 + Math.sin(Date.now() * 0.003) * 0.08;
+galaxyCore.scale.y = galaxyCore.scale.x;
+galaxyCore.scale.z = galaxyCore.scale.x;
     renderer.render(
         scene,
         camera
