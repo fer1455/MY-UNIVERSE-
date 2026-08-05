@@ -132,6 +132,14 @@ function animate(){
 
     stars.rotation.y += 0.00012;
 stars.rotation.x += 0.0001;
+    
+    const galaxyScale = 1 + Math.sin(Date.now() * 0.0008) * 0.015;
+
+stars.scale.set(
+    galaxyScale,
+    galaxyScale,
+    galaxyScale
+);
 
 galaxyCore.rotation.y += 0.002;;
     const pulse = 1 + Math.sin(Date.now() * 0.003) * 0.15;
