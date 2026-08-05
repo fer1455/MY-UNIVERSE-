@@ -159,37 +159,47 @@ const glow = new THREE.Mesh(
 scene.add(glow);
 
 // AnimaciÃ³n
-function animate(){
+function animate() {
 
     requestAnimationFrame(animate);
 
+    // Giro de la galaxia
     stars.rotation.y += 0.00012;
-stars.rotation.x += 0.0001;
+    stars.rotation.x += 0.0001;
 
-galaxyCore.rotation.y += 0.002;;
+    // Giro del núcleo
+    galaxyCore.rotation.y += 0.002;
+
+    // Latido del núcleo
     const pulse = 1 + Math.sin(Date.now() * 0.003) * 0.15;
 
-galaxyCore.scale.set(
-    pulse,
-    pulse,
-    pulse
-);
+    galaxyCore.scale.set(
+        pulse,
+        pulse,
+        pulse
+    );
+
+    // Movimiento de la nebulosa
+    nebula.rotation.y += 0.00005;
+    nebula.rotation.x += 0.00002;
+
+    // Latido del halo
+    glow.scale.set(
+        pulse * 1.6,
+        pulse * 1.6,
+        pulse * 1.6
+    );
+
+    glow.rotation.y += 0.001;
+
+    // Mostrar la escena
     renderer.render(
         scene,
         camera
     );
-
-    glow.scale.set(
-    pulse * 1.6,
-    pulse * 1.6,
-    pulse * 1.6
-);
-
-glow.rotation.y += 0.001;
 }
 
 animate();
-
 
 // BotÃ³n sorpresa
 
