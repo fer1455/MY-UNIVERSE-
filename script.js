@@ -68,6 +68,37 @@ const stars = new THREE.Points(
 );
 
 scene.add(stars);
+// Estrellas de fondo
+const bgGeometry = new THREE.BufferGeometry();
+
+const bgPositions = [];
+
+for (let i = 0; i < 3000; i++) {
+
+    bgPositions.push(
+        (Math.random() - 0.5) * 300,
+        (Math.random() - 0.5) * 300,
+        (Math.random() - 0.5) * 300
+    );
+
+}
+
+bgGeometry.setAttribute(
+    "position",
+    new THREE.Float32BufferAttribute(bgPositions, 3)
+);
+
+const bgMaterial = new THREE.PointsMaterial({
+    color: 0xffffff,
+    size: 0.05
+});
+
+const backgroundStars = new THREE.Points(
+    bgGeometry,
+    bgMaterial
+);
+
+scene.add(backgroundStars);
 // NÃºcleo de la galaxia
 const coreGeometry = new THREE.SphereGeometry(0.25, 32, 32);
 
