@@ -160,6 +160,18 @@ animate();
 
 // BotÃ³n sorpresa
 
+const button = document.getElementById("open");
+const message = document.getElementById("message");
+const card = document.querySelector(".card");
+
+button.onclick = () => {
+
+    button.style.display = "none";
+
+    card.classList.add("open");
+
+};
+
 card.onclick = () => {
 
     if (button.style.display !== "none") return;
