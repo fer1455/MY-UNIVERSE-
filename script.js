@@ -160,15 +160,10 @@ animate();
 
 // BotÃ³n sorpresa
 
-const button = document.getElementById("open");
-const message = document.getElementById("message");
+card.onclick = () => {
 
-button.onclick = () => {
+    if (button.style.display !== "none") return;
 
-    alert("Botón funcionando");
-
-    message.classList.add("show");
-
-    button.style.display = "none";
+    message.classList.toggle("show");
 
 };
