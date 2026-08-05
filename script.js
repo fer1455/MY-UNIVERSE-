@@ -109,6 +109,21 @@ const coreMaterial = new THREE.MeshBasicMaterial({
 const galaxyCore = new THREE.Mesh(coreGeometry, coreMaterial);
 
 scene.add(galaxyCore);
+// Halo brillante
+const glowGeometry = new THREE.SphereGeometry(0.45, 32, 32);
+
+const glowMaterial = new THREE.MeshBasicMaterial({
+    color: 0xff99dd,
+    transparent: true,
+    opacity: 0.25
+});
+
+const glow = new THREE.Mesh(
+    glowGeometry,
+    glowMaterial
+);
+
+scene.add(glow);
 
 // AnimaciÃ³n
 function animate(){
@@ -130,6 +145,14 @@ galaxyCore.scale.set(
         scene,
         camera
     );
+
+    glow.scale.set(
+    pulse * 1.6,
+    pulse * 1.6,
+    pulse * 1.6
+);
+
+glow.rotation.y += 0.001;
 }
 
 animate();
