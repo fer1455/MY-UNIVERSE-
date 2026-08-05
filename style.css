@@ -67,3 +67,35 @@ button {
     line-height:1.6;
     font-size:18px;
 }
+#photos{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+}
+
+.photo{
+    position:absolute;
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid rgba(255,255,255,.8);
+    box-shadow:0 0 20px rgba(255,150,220,.5);
+    cursor:pointer;
+    pointer-events:auto;
+    transition:.4s;
+}
+
+.photo:hover{
+    transform:scale(1.15);
+}
+
+#photoText{
+    position:fixed;
+    bottom:40px;
+    left:50%;
+    transform:translateX(-50%);
+    color:white;
+    font-size:22px;
+    text-shadow:0 0 10px black;
+}
