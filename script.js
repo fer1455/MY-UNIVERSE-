@@ -58,10 +58,11 @@ galaxyGeometry.setAttribute(
 );
 
 const galaxyMaterial = new THREE.PointsMaterial({
-    color: 0xffccff,
-    size: 0.02
+    color: 0xffffff,
+    size: 0.06,
+    transparent: true,
+    opacity: 0.9
 });
-
 const stars = new THREE.Points(
     galaxyGeometry,
     galaxyMaterial
@@ -90,11 +91,10 @@ nebulaGeometry.setAttribute(
 
 const nebulaMaterial = new THREE.PointsMaterial({
     color: 0xaa66ff,
-    size: 0.03,
+    size: 0.08,
     transparent: true,
-    opacity: 0.25
+    opacity: 0.12
 });
-
 const nebula = new THREE.Points(
     nebulaGeometry,
     nebulaMaterial
