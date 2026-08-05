@@ -68,6 +68,39 @@ const stars = new THREE.Points(
 );
 
 scene.add(stars);
+// Nebulosa
+const nebulaGeometry = new THREE.BufferGeometry();
+
+const nebulaPositions = [];
+
+for (let i = 0; i < 5000; i++) {
+
+    nebulaPositions.push(
+        (Math.random() - 0.5) * 40,
+        (Math.random() - 0.5) * 15,
+        (Math.random() - 0.5) * 40
+    );
+
+}
+
+nebulaGeometry.setAttribute(
+    "position",
+    new THREE.Float32BufferAttribute(nebulaPositions, 3)
+);
+
+const nebulaMaterial = new THREE.PointsMaterial({
+    color: 0xaa66ff,
+    size: 0.03,
+    transparent: true,
+    opacity: 0.25
+});
+
+const nebula = new THREE.Points(
+    nebulaGeometry,
+    nebulaMaterial
+);
+
+scene.add(nebula);
 // Estrellas de fondo
 const bgGeometry = new THREE.BufferGeometry();
 
