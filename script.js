@@ -91,10 +91,10 @@ nebulaGeometry.setAttribute(
 );
 
 const nebulaMaterial = new THREE.PointsMaterial({
-    color: 0xff66cc,
-    size: 0.06,
+    color: 0xcc66ff,
+    size: 0.09,
     transparent: true,
-    opacity: 0.08,
+    opacity: 0.18,
     depthWrite: false,
     blending: THREE.AdditiveBlending
 });
@@ -104,6 +104,7 @@ const nebula = new THREE.Points(
 );
 
 scene.add(nebula);
+nebula.scale.set(1.4, 1.0, 1.4);
 // Estrellas de fondo
 const bgGeometry = new THREE.BufferGeometry();
 
