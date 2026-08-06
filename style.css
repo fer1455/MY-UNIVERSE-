@@ -111,3 +111,24 @@ button {
     font-size:22px;
     text-shadow:0 0 10px black;
 }
+
+#showCard {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    background: rgba(255, 102, 204, 0.8);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 25px;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    display: none;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+#showCard:hover {
+    transform: scale(1.05);
+    background: rgba(255, 102, 204, 1);
+}
