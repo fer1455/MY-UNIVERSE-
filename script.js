@@ -154,9 +154,9 @@ backgroundStars.rotation.z = 0.1;
 const glowGeometry = new THREE.SphereGeometry(0.45, 32, 32);
 
 const glowMaterial = new THREE.MeshBasicMaterial({
-    color: 0xff99dd,
+    color: 0xff66cc,
     transparent: true,
-    opacity: 0.25
+    opacity: 0.45
 });
 
 const glow = new THREE.Mesh(
@@ -165,6 +165,39 @@ const glow = new THREE.Mesh(
 );
 
 scene.add(glow);
+// Partículas alrededor del núcleo
+const orbitGeometry = new THREE.BufferGeometry();
+const orbitPositions = [];
+
+for (let i = 0; i < 300; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const radius = 0.8 + Math.random() * 0.4;
+
+    orbitPositions.push(
+        Math.cos(angle) * radius,
+        (Math.random() - 0.5) * 0.2,
+        Math.sin(angle) * radius
+    );
+}
+
+orbitGeometry.setAttribute(
+    "position",
+    new THREE.Float32BufferAttribute(orbitPositions, 3)
+);
+
+const orbitMaterial = new THREE.PointsMaterial({
+    color: 0xffccff,
+    size: 0.04,
+    transparent: true,
+    opacity: 0.9
+});
+
+const orbitParticles = new THREE.Points(
+    orbitGeometry,
+    orbitMaterial
+);
+
+scene.add(orbitParticles);
 
 // AnimaciÃ³n
 function animate() {
@@ -175,12 +208,13 @@ function animate() {
     stars.rotation.y += 0.00012;
     stars.rotation.z += 0.00003;
     stars.rotation.x += 0.0001;
+    orbitParticles.rotation.y += 0.004;
 
     // Giro del núcleo
     galaxyCore.rotation.y += 0.002;
 
     // Latido del núcleo
-    const pulse = 1 + Math.sin(Date.now() * 0.003) * 0.15;
+    const pulse = 1 + Math.sin(Date.now() * 0.003) * 0.25;
 
     galaxyCore.scale.set(
         pulse,
