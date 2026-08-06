@@ -34,7 +34,7 @@ const galaxyCount = 25000;
 const positions = [];
 
 const arms = 5;
-const radius = 14;
+const radius = 15;
 
 for (let i = 0; i < galaxyCount; i++) {
 
