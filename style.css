@@ -40,6 +40,8 @@ cursor: pointer;
     width: 90px;
     height: 90px;
     position: fixed;
+    top: auto;
+left: auto;
     bottom: 20px;
     right: 20px;
     transform: none;
