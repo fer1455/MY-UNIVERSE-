@@ -34,8 +34,8 @@ const galaxyGeometry = new THREE.BufferGeometry();
 const galaxyCount = 25000;
 const positions = [];
 
-const arms = 4;
-const radius = 10;
+const arms = 5;
+const radius = 14;
 
 for (let i = 0; i < galaxyCount; i++) {
 
