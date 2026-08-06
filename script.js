@@ -165,6 +165,12 @@ const glow = new THREE.Mesh(
 );
 
 scene.add(glow);
+// Luz del núcleo
+const coreLight = new THREE.PointLight(0xff66cc, 4, 15);
+
+coreLight.position.set(0, 0, 0);
+
+scene.add(coreLight);
 // Partículas alrededor del núcleo
 const orbitGeometry = new THREE.BufferGeometry();
 const orbitPositions = [];
@@ -232,6 +238,8 @@ function animate() {
         pulse * 1.6,
         pulse * 1.6
     );
+    
+    coreLight.intensity = 3.5 + Math.sin(Date.now() * 0.003) * 1;
 
     glow.rotation.y += 0.001;
 
