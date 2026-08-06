@@ -278,7 +278,8 @@ animate();
 
 const button = document.getElementById("open");
 const message = document.getElementById("message");
-const showCard = document.getElementById("showCard");;
+const card = document.querySelector(".card");
+const showCard = document.getElementById("showCard");
 
 button.onclick = () => {
 
