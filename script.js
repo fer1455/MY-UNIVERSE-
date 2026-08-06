@@ -191,10 +191,12 @@ orbitGeometry.setAttribute(
 );
 
 const orbitMaterial = new THREE.PointsMaterial({
-    color: 0xffccff,
-    size: 0.04,
+    color: 0xff66ff,
+    size: 0.05,
     transparent: true,
-    opacity: 0.9
+    opacity: 1,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending
 });
 
 const orbitParticles = new THREE.Points(
