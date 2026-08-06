@@ -188,11 +188,23 @@ const galaxyHalo = new THREE.Mesh(
 
 scene.add(galaxyHalo);
 // Luz del núcleo
-const coreLight = new THREE.PointLight(0xff66cc, 4, 15);
-
+const coreLight = new THREE.PointLight(
+    0xff88dd,
+    6,
+    25
+);
 coreLight.position.set(0, 0, 0);
 
 scene.add(coreLight);
+const ambientGlow = new THREE.PointLight(
+    0xaa66ff,
+    1.8,
+    40
+);
+
+ambientGlow.position.set(0, 0, 0);
+
+scene.add(ambientGlow);
 // Partículas alrededor del núcleo
 const orbitGeometry = new THREE.BufferGeometry();
 const orbitPositions = [];
@@ -267,6 +279,8 @@ backgroundStars.rotation.y += 0.00002;
     );
     
     coreLight.intensity = 3.5 + Math.sin(Date.now() * 0.003) * 1;
+    ambientGlow.intensity =
+    1.8 + Math.sin(Date.now() * 0.003) * 0.4;
 
     glow.rotation.y += 0.001;
     galaxyHalo.rotation.y += 0.0003;
