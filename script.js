@@ -34,15 +34,15 @@ const galaxyGeometry = new THREE.BufferGeometry();
 const galaxyCount = 25000;
 const positions = [];
 
-const arms = 5;
-const radius = 12;
+const arms = 4;
+const radius = 10;
 
 for (let i = 0; i < galaxyCount; i++) {
 
     const r = Math.random() * radius;
     const arm = (i % arms) * (Math.PI * 2 / arms);
 
-    const angle = arm + r * 0.7;
+    const angle = arm + r * 1.2;
 
     positions.push(
         Math.cos(angle) * r + (Math.random() - 0.5) * 0.3,
@@ -58,7 +58,7 @@ galaxyGeometry.setAttribute(
 );
 
 const galaxyMaterial = new THREE.PointsMaterial({
-    color: 0xffffff,
+    color: 0xffb3ff,
     size: 0.03,
     transparent: true,
     opacity: 0.9,
@@ -92,7 +92,7 @@ nebulaGeometry.setAttribute(
 );
 
 const nebulaMaterial = new THREE.PointsMaterial({
-    color: 0xaa66ff,
+    color: 0xff66cc,
     size: 0.06,
     transparent: true,
     opacity: 0.08,
