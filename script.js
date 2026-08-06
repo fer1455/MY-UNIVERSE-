@@ -13,7 +13,6 @@ const camera = new THREE.PerspectiveCamera(
 
 camera.position.z = 10;
 
-
 // Render
 const renderer = new THREE.WebGLRenderer({
     canvas: document.getElementById("galaxy"),
@@ -213,7 +212,7 @@ function animate() {
     // Giro de la galaxia
     stars.rotation.y += 0.00012;
     stars.rotation.z += 0.00003;
-    stars.rotation.x += 0.0001;
+    stars.rotation.x = Math.sin(Date.now() * 0.0002) * 0.08;
     orbitParticles.rotation.y += 0.004;
 
     // Giro del núcleo
@@ -230,7 +229,10 @@ function animate() {
 
     // Movimiento de la nebulosa
     nebula.rotation.y += 0.00005;
-    nebula.rotation.x += 0.00002;
+nebula.rotation.x += 0.00002;
+nebula.rotation.z += 0.00001;
+
+backgroundStars.rotation.y += 0.00002;
 
     // Latido del halo
     glow.scale.set(
