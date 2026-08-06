@@ -164,6 +164,22 @@ const glow = new THREE.Mesh(
 );
 
 scene.add(glow);
+// Halo exterior de la galaxia
+const galaxyHaloGeometry = new THREE.SphereGeometry(5, 64, 64);
+
+const galaxyHaloMaterial = new THREE.MeshBasicMaterial({
+    color: 0xaa44ff,
+    transparent: true,
+    opacity: 0.06,
+    side: THREE.BackSide
+});
+
+const galaxyHalo = new THREE.Mesh(
+    galaxyHaloGeometry,
+    galaxyHaloMaterial
+);
+
+scene.add(galaxyHalo);
 // Luz del núcleo
 const coreLight = new THREE.PointLight(0xff66cc, 4, 15);
 
@@ -246,6 +262,8 @@ backgroundStars.rotation.y += 0.00002;
     coreLight.intensity = 3.5 + Math.sin(Date.now() * 0.003) * 1;
 
     glow.rotation.y += 0.001;
+    galaxyHalo.rotation.y += 0.0003;
+galaxyHalo.rotation.x += 0.0001;
 
     // Mostrar la escena
     renderer.render(
