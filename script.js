@@ -292,6 +292,7 @@ card.onclick = () => {
 
     if (button.style.display !== "none") return;
 
-    message.classList.toggle("show");
+    card.style.opacity = "0";
+    card.style.pointerEvents = "none";
 
 };
