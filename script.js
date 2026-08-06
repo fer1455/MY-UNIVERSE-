@@ -70,6 +70,7 @@ const stars = new THREE.Points(
 );
 
 scene.add(stars);
+stars.scale.set(1.15, 1.15, 1.15);
 // Nebulosa
 const nebulaGeometry = new THREE.BufferGeometry();
 
@@ -92,7 +93,7 @@ nebulaGeometry.setAttribute(
 
 const nebulaMaterial = new THREE.PointsMaterial({
     color: 0xcc66ff,
-    size: 0.09,
+    size: 0.08,
     transparent: true,
     opacity: 0.18,
     depthWrite: false,
@@ -104,7 +105,7 @@ const nebula = new THREE.Points(
 );
 
 scene.add(nebula);
-nebula.scale.set(1.4, 1.0, 1.4);
+nebula.scale.set(1.5, 1.1, 1.5);
 // Estrellas de fondo
 const bgGeometry = new THREE.BufferGeometry();
 
@@ -112,7 +113,7 @@ const bgPositions = [];
 
 for (let i = 0; i < 3000; i++) {
 
-    bgPositions.push(
+    bgPositions.push(0
         (Math.random() - 0.5) * 300,
         (Math.random() - 0.5) * 300,
         (Math.random() - 0.5) * 300
@@ -125,9 +126,14 @@ bgGeometry.setAttribute(
     new THREE.Float32BufferAttribute(bgPositions, 3)
 );
 
-const bgMaterial = new THREE.PointsMaterial({
-    color: 0xffffff,
-    size: 0.05
+const galaxyMaterial = new THREE.PointsMaterial({
+    color: 0xffccff,
+    size: 0.02,
+    transparent: true,
+    opacity: 1,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+    vertexColors: false
 });
 
 const backgroundStars = new THREE.Points(
