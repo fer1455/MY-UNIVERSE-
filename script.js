@@ -271,7 +271,17 @@ backgroundStars.rotation.y += 0.00002;
     glow.rotation.y += 0.001;
     galaxyHalo.rotation.y += 0.0003;
 galaxyHalo.rotation.x += 0.0001;
+    
+shootingStar.position.x += 0.18;
+shootingStar.position.y -= 0.08;
 
+if (shootingStar.position.x > 25) {
+    shootingStar.position.set(
+        -25,
+        Math.random() * 12 + 5,
+        (Math.random() - 0.5) * 20
+    );
+}
     // Mostrar la escena
     renderer.render(
         scene,
