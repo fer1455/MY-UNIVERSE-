@@ -5,13 +5,13 @@ const scene = new THREE.Scene();
 
 // CÃ¡mara
 const camera = new THREE.PerspectiveCamera(
-    75,
+    70,
     window.innerWidth / window.innerHeight,
     0.1,
     1000
 );
 
-camera.position.z = 10;
+camera.position.z = 8;
 
 // Render
 const renderer = new THREE.WebGLRenderer({
@@ -113,7 +113,7 @@ const bgPositions = [];
 
 for (let i = 0; i < 3000; i++) {
 
-    bgPositions.push(0
+    bgPositions.push(
         (Math.random() - 0.5) * 300,
         (Math.random() - 0.5) * 300,
         (Math.random() - 0.5) * 300
@@ -126,7 +126,7 @@ bgGeometry.setAttribute(
     new THREE.Float32BufferAttribute(bgPositions, 3)
 );
 
-const galaxyMaterial = new THREE.PointsMaterial({
+const bgMaterial = new THREE.PointsMaterial({
     color: 0xffccff,
     size: 0.02,
     transparent: true,
@@ -272,15 +272,6 @@ backgroundStars.rotation.y += 0.00002;
     galaxyHalo.rotation.y += 0.0003;
 galaxyHalo.rotation.x += 0.0001;
     
-shootingStar.position.x += 0.18;
-shootingStar.position.y -= 0.08;
-
-if (shootingStar.position.x > 25) {
-    shootingStar.position.set(
-        -25,
-        Math.random() * 12 + 5,
-        (Math.random() - 0.5) * 20
-    );
 }
     // Mostrar la escena
     renderer.render(
