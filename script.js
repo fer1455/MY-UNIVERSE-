@@ -278,7 +278,7 @@ animate();
 
 const button = document.getElementById("open");
 const message = document.getElementById("message");
-const card = document.querySelector(".card");
+const showCard = document.getElementById("showCard");;
 
 button.onclick = () => {
 
@@ -292,7 +292,14 @@ card.onclick = () => {
 
     if (button.style.display !== "none") return;
 
-    card.style.opacity = "0";
-    card.style.pointerEvents = "none";
+    card.classList.add("minimized");
+    showCard.style.display = "block";
+
+};
+
+showCard.onclick = () => {
+
+    card.classList.remove("minimized");
+    showCard.style.display = "none";
 
 };
