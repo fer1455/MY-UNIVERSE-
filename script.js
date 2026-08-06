@@ -272,7 +272,6 @@ backgroundStars.rotation.y += 0.00002;
     galaxyHalo.rotation.y += 0.0003;
 galaxyHalo.rotation.x += 0.0001;
     
-}
     // Mostrar la escena
     renderer.render(
         scene,
