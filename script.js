@@ -146,6 +146,10 @@ const coreMaterial = new THREE.MeshBasicMaterial({
 const galaxyCore = new THREE.Mesh(coreGeometry, coreMaterial);
 
 scene.add(galaxyCore);
+
+backgroundStars.rotation.x = 0.2;
+backgroundStars.rotation.z = 0.1;
+
 // Halo brillante
 const glowGeometry = new THREE.SphereGeometry(0.45, 32, 32);
 
@@ -169,6 +173,7 @@ function animate() {
 
     // Giro de la galaxia
     stars.rotation.y += 0.00012;
+    stars.rotation.z += 0.00003;
     stars.rotation.x += 0.0001;
 
     // Giro del núcleo
