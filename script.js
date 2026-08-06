@@ -5,13 +5,13 @@ const scene = new THREE.Scene();
 
 // CÃ¡mara
 const camera = new THREE.PerspectiveCamera(
-    80,
+    65,
     window.innerWidth / window.innerHeight,
     0.1,
     1000
 );
 
-camera.position.z = 8;
+camera.position.z = 7;
 
 // Render
 const renderer = new THREE.WebGLRenderer({
@@ -210,8 +210,8 @@ const heart = new THREE.Mesh(
     heartMaterial
 );
 
-heart.scale.set(0.25, 0.25, 0.25);
-heart.position.set(0, 0, 0);
+heart.scale.set(0.8, 0.8, 0.8);
+heart.position.set(0, 0, 0.6);
 
 scene.add(heart);
 // Luz del núcleo
