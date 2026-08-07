@@ -228,14 +228,14 @@ for (let i = 0; i < heartParticles; i++) {
         Math.sqrt(
             Math.max(
                 0,
-                1 - distancia / 1.2
+                1 - distancia / 3
             )
         );
 
     const z =
         (Math.random() - 0.5)
         * profundidad
-        * 5.5;
+        * 3;
 
     heartPositions.push(
         x * 2.2,
@@ -270,9 +270,9 @@ const heart = new THREE.Points(
 heart.position.set(0, 0, 1);
 
 heart.scale.set(
-    0.5,
-    0.5,
-    0.5
+    0.8,
+    0.8,
+    0.8
 );
 
 scene.add(heart);
