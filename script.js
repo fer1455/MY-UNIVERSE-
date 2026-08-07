@@ -194,20 +194,20 @@ const heartPositions = [];
 for (let i = 0; i < 2000; i++) {
 
     const t = Math.random() * Math.PI * 2;
+const r = Math.sqrt(Math.random());
 
-    const x = 16 * Math.pow(Math.sin(t), 3);
-    const y =
-        13 * Math.cos(t)
-        - 5 * Math.cos(2 * t)
-        - 2 * Math.cos(3 * t)
-        - Math.cos(4 * t);
+const x = 16 * Math.pow(Math.sin(t), 3) * r;
+const y =
+    (13 * Math.cos(t)
+    - 5 * Math.cos(2 * t)
+    - 2 * Math.cos(3 * t)
+    - Math.cos(4 * t)) * r;
 
-    heartPositions.push(
-        x * 0.05,
-        y * 0.05,
-        (Math.random() - 0.5) * 0.08
-    );
-}
+heartPositions.push(
+    x * 0.05,
+    y * 0.05,
+    (Math.random() - 0.5) * 0.1
+);
 
 heartGeometry.setAttribute(
     "position",
