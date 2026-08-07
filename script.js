@@ -188,32 +188,7 @@ const galaxyHalo = new THREE.Mesh(
 
 scene.add(galaxyHalo);
 // Corazón luminoso
-const heartShape = new THREE.Shape();
 
-heartShape.moveTo(0, 0);
-heartShape.bezierCurveTo(0, 0.3, -0.5, 0.6, -1, 0);
-heartShape.bezierCurveTo(-1.5, -0.8, 0, -1.6, 0, -2);
-heartShape.bezierCurveTo(0, -1.6, 1.5, -0.8, 1, 0);
-heartShape.bezierCurveTo(0.5, 0.6, 0, 0.3, 0, 0);
-
-const heartGeometry = new THREE.ShapeGeometry(heartShape);
-
-const heartMaterial = new THREE.MeshBasicMaterial({
-    color: 0xff66cc,
-    transparent: true,
-    opacity: 0.9,
-    side: THREE.DoubleSide
-});
-
-const heart = new THREE.Mesh(
-    heartGeometry,
-    heartMaterial
-);
-
-heart.scale.set(0.8, 0.8, 0.8);
-heart.position.set(0, 0, 0.6);
-
-scene.add(heart);
 // Luz del núcleo
 const coreLight = new THREE.PointLight(
     0xff88dd,
