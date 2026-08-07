@@ -228,14 +228,14 @@ for (let i = 0; i < heartParticles; i++) {
         Math.sqrt(
             Math.max(
                 0,
-                1 - distancia / 3
+                1 - distancia / 1.6
             )
         );
 
     const z =
         (Math.random() - 0.5)
         * profundidad
-        * 3;
+        * 1.2;
 
     heartPositions.push(
         x * 2.2,
