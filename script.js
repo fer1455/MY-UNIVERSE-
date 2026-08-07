@@ -187,43 +187,60 @@ const galaxyHalo = new THREE.Mesh(
 );
 
 scene.add(galaxyHalo);
-// ❤️ Corazón 3D de partículas
+// ❤️ Corazón 3D formado por partículas
 const heartGeometry = new THREE.BufferGeometry();
 const heartPositions = [];
 
-const heartParticles = 9000;
+const heartParticles = 8000;
 
 for (let i = 0; i < heartParticles; i++) {
 
-    const t = Math.random() * Math.PI * 2;
+    let x, y;
 
-    // Forma del corazón
-    const hx = 16 * Math.pow(Math.sin(t), 3);
+    // Buscar un punto dentro de la forma del corazón
+    do {
 
-    const hy =
-        13 * Math.cos(t)
-        - 5 * Math.cos(2 * t)
-        - 2 * Math.cos(3 * t)
-        - Math.cos(4 * t);
+        x = Math.random() * 2.8 - 1.4;
+        y = Math.random() * 2.5 - 1.2;
 
-    // Relleno interno
-    const r = Math.sqrt(Math.random());
+        const hx = x;
+        const hy = y;
 
-    const x = hx * r;
-    const y = hy * r;
+        const formula =
+            Math.pow(
+                hx * hx + hy * hy - 1,
+                3
+            )
+            - hx * hx * Math.pow(hy, 3);
 
-    // Volumen redondeado
-    const depth = Math.sqrt(1 - r * r);
+        if (formula <= 0) {
+            break;
+        }
+
+    } while (true);
+
+    // Distancia aproximada desde el centro
+    const distancia =
+        Math.sqrt(x * x + y * y);
+
+    // Da volumen redondeado al corazón
+    const profundidad =
+        Math.sqrt(
+            Math.max(
+                0,
+                1 - distancia / 1.6
+            )
+        );
 
     const z =
         (Math.random() - 0.5)
-        * 5
-        * depth;
+        * profundidad
+        * 1.2;
 
     heartPositions.push(
-        x * 0.055,
-        y * 0.055,
-        z * 0.055
+        x * 2.2,
+        y * 2.2,
+        z * 2.2
     );
 }
 
@@ -237,21 +254,26 @@ heartGeometry.setAttribute(
 
 // Material de las partículas
 const heartMaterial = new THREE.PointsMaterial({
-    color: 0xff8fda,
+    color: 0xff66cc,
     size: 0.035,
     transparent: true,
-    opacity: 0.95,
+    opacity: 0.9,
     depthWrite: false,
     blending: THREE.AdditiveBlending
 });
 
-// Crear corazón
 const heart = new THREE.Points(
     heartGeometry,
     heartMaterial
 );
 
-heart.position.set(0, 0, 0.8);
+heart.position.set(0, 0, 1);
+
+heart.scale.set(
+    0.8,
+    0.8,
+    0.8
+);
 
 scene.add(heart);
 // Corazón luminoso
