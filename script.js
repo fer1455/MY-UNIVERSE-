@@ -331,6 +331,17 @@ backgroundStars.rotation.y += 0.00002;
     glow.rotation.y += 0.001;
     galaxyHalo.rotation.y += 0.0003;
 galaxyHalo.rotation.x += 0.0001;
+
+    // Animación del corazón
+heart.rotation.y += 0.01;
+
+const heartPulse = 1 + Math.sin(Date.now() * 0.003) * 0.12;
+
+heart.scale.set(
+    heartPulse,
+    heartPulse,
+    heartPulse
+);
     
     // Mostrar la escena
     renderer.render(
