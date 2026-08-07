@@ -270,9 +270,9 @@ const heart = new THREE.Points(
 heart.position.set(0, 0, 1);
 
 heart.scale.set(
-    0.35,
-    0.35,
-    0.5
+    0.25,
+    0.25,
+    0.35
 );
 
 scene.add(heart);
