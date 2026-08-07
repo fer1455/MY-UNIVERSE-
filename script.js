@@ -191,7 +191,7 @@ scene.add(galaxyHalo);
 const heartGeometry = new THREE.BufferGeometry();
 const heartPositions = [];
 
-const heartParticles = 8000;
+const heartParticles = 15000;
 
 for (let i = 0; i < heartParticles; i++) {
 
@@ -235,7 +235,7 @@ for (let i = 0; i < heartParticles; i++) {
     const z =
         (Math.random() - 0.5)
         * profundidad
-        * 1.2;
+        * 9;
 
     heartPositions.push(
         x * 2.2,
