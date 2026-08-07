@@ -187,6 +187,50 @@ const galaxyHalo = new THREE.Mesh(
 );
 
 scene.add(galaxyHalo);
+// Corazón de partículas
+const heartGeometry = new THREE.BufferGeometry();
+const heartPositions = [];
+
+for (let i = 0; i < 2000; i++) {
+
+    const t = Math.random() * Math.PI * 2;
+
+    const x = 16 * Math.pow(Math.sin(t), 3);
+    const y =
+        13 * Math.cos(t)
+        - 5 * Math.cos(2 * t)
+        - 2 * Math.cos(3 * t)
+        - Math.cos(4 * t);
+
+    heartPositions.push(
+        x * 0.05,
+        y * 0.05,
+        (Math.random() - 0.5) * 0.08
+    );
+}
+
+heartGeometry.setAttribute(
+    "position",
+    new THREE.Float32BufferAttribute(heartPositions, 3)
+);
+
+const heartMaterial = new THREE.PointsMaterial({
+    color: 0xff66cc,
+    size: 0.03,
+    transparent: true,
+    opacity: 1,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending
+});
+
+const heart = new THREE.Points(
+    heartGeometry,
+    heartMaterial
+);
+
+heart.position.set(0, 0, 0.8);
+
+scene.add(heart);
 // Corazón luminoso
 
 // Luz del núcleo
