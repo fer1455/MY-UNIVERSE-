@@ -187,43 +187,65 @@ const galaxyHalo = new THREE.Mesh(
 );
 
 scene.add(galaxyHalo);
-// Corazón de partículas
+// ❤️ Corazón 3D de partículas
 const heartGeometry = new THREE.BufferGeometry();
 const heartPositions = [];
 
-for (let i = 0; i < 6000; i++) {
+const heartParticles = 9000;
+
+for (let i = 0; i < heartParticles; i++) {
 
     const t = Math.random() * Math.PI * 2;
-    const r = Math.sqrt(Math.random());
 
-    const x = 16 * Math.pow(Math.sin(t), 3) * r;
-    const y =
-        (13 * Math.cos(t)
+    // Forma del corazón
+    const hx = 16 * Math.pow(Math.sin(t), 3);
+
+    const hy =
+        13 * Math.cos(t)
         - 5 * Math.cos(2 * t)
         - 2 * Math.cos(3 * t)
-        - Math.cos(4 * t)) * r;
+        - Math.cos(4 * t);
+
+    // Relleno interno
+    const r = Math.sqrt(Math.random());
+
+    const x = hx * r;
+    const y = hy * r;
+
+    // Volumen redondeado
+    const depth = Math.sqrt(1 - r * r);
+
+    const z =
+        (Math.random() - 0.5)
+        * 5
+        * depth;
 
     heartPositions.push(
-        x * 0.05,
-        y * 0.05,
-        (Math.random() - 0.5) * 0.1
+        x * 0.055,
+        y * 0.055,
+        z * 0.055
     );
 }
 
 heartGeometry.setAttribute(
     "position",
-    new THREE.Float32BufferAttribute(heartPositions, 3)
+    new THREE.Float32BufferAttribute(
+        heartPositions,
+        3
+    )
 );
 
+// Material de las partículas
 const heartMaterial = new THREE.PointsMaterial({
-    color: 0xff66cc,
-    size: 0.03,
+    color: 0xff8fda,
+    size: 0.035,
     transparent: true,
-    opacity: 1,
+    opacity: 0.95,
     depthWrite: false,
     blending: THREE.AdditiveBlending
 });
 
+// Crear corazón
 const heart = new THREE.Points(
     heartGeometry,
     heartMaterial
