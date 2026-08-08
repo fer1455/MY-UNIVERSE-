@@ -346,15 +346,17 @@ function animate() {
     // Giro del núcleo
     galaxyCore.rotation.y += 0.002;
 
-    // Latido del núcleo
-    const pulse = 1 + Math.sin(Date.now() * 0.003) * 0.25;
+    // 💗 Latido del corazón
+const heartPulse =
+    0.18 + Math.sin(Date.now() * 0.003) * 0.02;
 
-    galaxyCore.scale.set(
-        pulse,
-        pulse,
-        pulse
-    );
+heart.scale.set(
+    heartPulse,
+    heartPulse,
+    heartPulse
+);
 
+heart.rotation.y += 0.01;
     // Movimiento de la nebulosa
     nebula.rotation.y += 0.00005;
 nebula.rotation.x += 0.00002;
