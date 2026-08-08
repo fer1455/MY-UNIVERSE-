@@ -235,7 +235,7 @@ for (let i = 0; i < heartParticles; i++) {
     const z =
         (Math.random() - 0.5)
         * profundidad
-        * o.8;
+        * 1;
 
     heartPositions.push(
         x * 2.2,
