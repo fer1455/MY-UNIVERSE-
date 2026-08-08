@@ -272,7 +272,7 @@ heart.position.set(0, 0, 1);
 heart.scale.set(
     0.18,
     0.18,
-    0.25
+    0.18
 );
 
 scene.add(heart);
