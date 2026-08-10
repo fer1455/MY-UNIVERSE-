@@ -114,9 +114,9 @@ const bgPositions = [];
 for (let i = 0; i < 3000; i++) {
 
     bgPositions.push(
-        (Math.random() - 0.5) * 300,
-        (Math.random() - 0.5) * 300,
-        (Math.random() - 0.5) * 300
+        (Math.random() - 0.5) * 80,
+(Math.random() - 0.5) * 80,
+(Math.random() - 0.5) * 80
     );
 
 }
