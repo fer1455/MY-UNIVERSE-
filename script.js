@@ -396,27 +396,9 @@ function animate() {
 
     requestAnimationFrame(animate);
 
-    // Giro de la galaxia
-    stars.rotation.y += 0.00012;
-    stars.rotation.z += 0.00003;
-    stars.rotation.x = Math.sin(Date.now() * 0.0002) * 0.08;
-    orbitParticles.rotation.y += 0.004;
-
     // Giro del núcleo
-    galaxyCore.rotation.y += 0.002;
+galaxyCore.rotation.y += 0.002;
 
-    coreGlow.rotation.y += 0.001;
-
-coreGlow.scale.set(
-    pulse * 1.5,
-    pulse * 1.5,
-    pulse * 1.5
-);
-
-    coreGlow.position.copy(galaxyCore.position);
-
-    coreParticles.rotation.y += 0.0015;
-coreParticles.rotation.x += 0.0005;
 // Latido del núcleo
 const pulse =
     1 + Math.sin(Date.now() * 0.003) * 0.25;
@@ -426,6 +408,24 @@ galaxyCore.scale.set(
     pulse,
     pulse
 );
+
+coreGlow.rotation.y += 0.001;
+
+coreGlow.scale.set(
+    pulse * 1.5,
+    pulse * 1.5,
+    pulse * 1.5
+);
+
+coreGlow.position.copy(galaxyCore.position);
+
+coreParticles.rotation.y += 0.0015;
+coreParticles.rotation.x += 0.0005;
+
+   coreGlow.position.copy(galaxyCore.position);
+
+coreParticles.rotation.y += 0.0015;
+coreParticles.rotation.x += 0.0005; 
 
 // Latido del corazón
 const heartPulse =
