@@ -170,6 +170,48 @@ const coreGlow = new THREE.Mesh(
 
 scene.add(coreGlow);
 
+const coreParticlesGeometry = new THREE.BufferGeometry();
+const coreParticlesCount = 500;
+
+const coreParticlesPositions = new Float32Array(
+    coreParticlesCount * 3
+);
+
+for (let i = 0; i < coreParticlesCount; i++) {
+    const radius = 1.2 + Math.random() * 1.5;
+    const angle = Math.random() * Math.PI * 2;
+
+    coreParticlesPositions[i * 3] =
+        Math.cos(angle) * radius;
+
+    coreParticlesPositions[i * 3 + 1] =
+        (Math.random() - 0.5) * 1.5;
+
+    coreParticlesPositions[i * 3 + 2] =
+        Math.sin(angle) * radius;
+}
+
+coreParticlesGeometry.setAttribute(
+    "position",
+    new THREE.BufferAttribute(coreParticlesPositions, 3)
+);
+
+const coreParticlesMaterial = new THREE.PointsMaterial({
+    color: 0xffa6df,
+    size: 0.025,
+    transparent: true,
+    opacity: 0.8,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false
+});
+
+const coreParticles = new THREE.Points(
+    coreParticlesGeometry,
+    coreParticlesMaterial
+);
+
+scene.add(coreParticles);
+
 backgroundStars.rotation.x = 0.2;
 backgroundStars.rotation.z = 0.1;
 
@@ -371,6 +413,10 @@ coreGlow.scale.set(
     pulse * 1.5
 );
 
+    coreGlow.position.copy(galaxyCore.position);
+
+    coreParticles.rotation.y += 0.0015;
+coreParticles.rotation.x += 0.0005;
 // Latido del núcleo
 const pulse =
     1 + Math.sin(Date.now() * 0.003) * 0.25;
