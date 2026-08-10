@@ -398,7 +398,6 @@ function animate() {
 
     // Giro del núcleo
 galaxyCore.rotation.y += 0.002;
-heart.rotation.x += 0.0003;
 // Latido del núcleo
 const pulse =
     1 + Math.sin(Date.now() * 0.003) * 0.25;
@@ -422,11 +421,6 @@ coreGlow.position.copy(galaxyCore.position);
 coreParticles.rotation.y += 0.0015;
 coreParticles.rotation.x += 0.0005;
 
-   coreGlow.position.copy(galaxyCore.position);
-
-coreParticles.rotation.y += 0.0015;
-coreParticles.rotation.x += 0.0005; 
-
 // Latido del corazón
 const heartPulse =
     0.18 + Math.sin(Date.now() * 0.003) * 0.02;
@@ -442,10 +436,6 @@ heart.rotation.y += 0.01;
     nebula.rotation.y += 0.00005;
 nebula.rotation.x += 0.00002;
 nebula.rotation.z += 0.00001;
-
-backgroundStars.rotation.y += 0.002;
-backgroundStars.rotation.x += 0.00015;
-backgroundStars.rotation.z += 0.00008;
 
     // Latido del halo
     glow.scale.set(
