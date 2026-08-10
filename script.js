@@ -443,7 +443,7 @@ heart.rotation.y += 0.01;
 nebula.rotation.x += 0.00002;
 nebula.rotation.z += 0.00001;
 
-backgroundStars.rotation.y += 0.0005;
+backgroundStars.rotation.y += 0.002;
 backgroundStars.rotation.x += 0.00015;
 backgroundStars.rotation.z += 0.00008;
 
