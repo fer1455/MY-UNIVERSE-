@@ -212,8 +212,9 @@ const coreParticles = new THREE.Points(
 
 scene.add(coreParticles);
 
-backgroundStars.rotation.x = 0.2;
-backgroundStars.rotation.z = 0.1;
+backgroundStars.rotation.y += 0.0005;
+backgroundStars.rotation.x += 0.00015;
+backgroundStars.rotation.z += 0.00008;
 
 // Halo brillante
 const glowGeometry = new THREE.SphereGeometry(0.45, 32, 32);
