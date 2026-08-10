@@ -110,15 +110,25 @@ nebula.scale.set(1.5, 1.1, 1.5);
 const bgGeometry = new THREE.BufferGeometry();
 
 const bgPositions = [];
+const bgAngles = [];
+const bgRadii = [];
+const bgHeights = [];
 
 for (let i = 0; i < 3000; i++) {
 
-    bgPositions.push(
-        (Math.random() - 0.5) * 80,
-(Math.random() - 0.5) * 80,
-(Math.random() - 0.5) * 80
-    );
+    const angle = Math.random() * Math.PI * 2;
+    const radius = 20 + Math.random() * 50;
+    const height = (Math.random() - 0.5) * 60;
 
+    bgAngles.push(angle);
+    bgRadii.push(radius);
+    bgHeights.push(height);
+
+    bgPositions.push(
+        Math.cos(angle) * radius,
+        height,
+        Math.sin(angle) * radius
+    );
 }
 
 bgGeometry.setAttribute(
@@ -132,8 +142,7 @@ const bgMaterial = new THREE.PointsMaterial({
     transparent: true,
     opacity: 1,
     depthWrite: false,
-    blending: THREE.AdditiveBlending,
-    vertexColors: false
+    blending: THREE.AdditiveBlending
 });
 
 const backgroundStars = new THREE.Points(
@@ -142,34 +151,6 @@ const backgroundStars = new THREE.Points(
 );
 
 scene.add(backgroundStars);
-// NÃºcleo de la galaxia
-const coreGeometry = new THREE.SphereGeometry(0.25, 32, 32);
-
-const coreMaterial = new THREE.MeshBasicMaterial({
-    color: 0xff66cc
-});
-
-const galaxyCore = new THREE.Mesh(coreGeometry, coreMaterial);
-
-scene.add(galaxyCore);
-
-const coreGlowGeometry = new THREE.SphereGeometry(0.8, 32, 32);
-
-const coreGlowMaterial = new THREE.MeshBasicMaterial({
-    color: 0xff66cc,
-    transparent: true,
-    opacity: 0.18,
-    blending: THREE.AdditiveBlending,
-    depthWrite: false
-});
-
-const coreGlow = new THREE.Mesh(
-    coreGlowGeometry,
-    coreGlowMaterial
-);
-
-scene.add(coreGlow);
-
 const coreParticlesGeometry = new THREE.BufferGeometry();
 const coreParticlesCount = 500;
 
