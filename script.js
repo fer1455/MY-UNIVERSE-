@@ -398,7 +398,7 @@ function animate() {
 
     // Giro del núcleo
 galaxyCore.rotation.y += 0.002;
-
+heart.rotation.x += 0.0003;
 // Latido del núcleo
 const pulse =
     1 + Math.sin(Date.now() * 0.003) * 0.25;
