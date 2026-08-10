@@ -153,6 +153,23 @@ const galaxyCore = new THREE.Mesh(coreGeometry, coreMaterial);
 
 scene.add(galaxyCore);
 
+const coreGlowGeometry = new THREE.SphereGeometry(0.8, 32, 32);
+
+const coreGlowMaterial = new THREE.MeshBasicMaterial({
+    color: 0xff66cc,
+    transparent: true,
+    opacity: 0.18,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false
+});
+
+const coreGlow = new THREE.Mesh(
+    coreGlowGeometry,
+    coreGlowMaterial
+);
+
+scene.add(coreGlow);
+
 backgroundStars.rotation.x = 0.2;
 backgroundStars.rotation.z = 0.1;
 
@@ -235,7 +252,7 @@ for (let i = 0; i < heartParticles; i++) {
     const z =
         (Math.random() - 0.5)
         * profundidad
-        * 1;
+        * 1.5;
 
     heartPositions.push(
         x * 2.2,
@@ -346,8 +363,13 @@ function animate() {
     // Giro del núcleo
     galaxyCore.rotation.y += 0.002;
 
-    // Giro del núcleo
-galaxyCore.rotation.y += 0.002;
+    coreGlow.rotation.y += 0.001;
+
+coreGlow.scale.set(
+    pulse * 1.5,
+    pulse * 1.5,
+    pulse * 1.5
+);
 
 // Latido del núcleo
 const pulse =
