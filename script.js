@@ -346,7 +346,20 @@ function animate() {
     // Giro del núcleo
     galaxyCore.rotation.y += 0.002;
 
-    // 💗 Latido del corazón
+    // Giro del núcleo
+galaxyCore.rotation.y += 0.002;
+
+// Latido del núcleo
+const pulse =
+    1 + Math.sin(Date.now() * 0.003) * 0.25;
+
+galaxyCore.scale.set(
+    pulse,
+    pulse,
+    pulse
+);
+
+// Latido del corazón
 const heartPulse =
     0.18 + Math.sin(Date.now() * 0.003) * 0.02;
 
@@ -379,18 +392,6 @@ backgroundStars.rotation.y += 0.00002;
     galaxyHalo.rotation.y += 0.0003;
 galaxyHalo.rotation.x += 0.0001;
 
-    // Animación del corazón
-heart.rotation.y += 0.01;
-
-const heartPulse =
-    1 + Math.sin(Date.now() * 0.003) * 0.12;
-
-heart.scale.set(
-    heartPulse,
-    heartPulse,
-    heartPulse
-);
-    
     // Mostrar la escena
     renderer.render(
         scene,
