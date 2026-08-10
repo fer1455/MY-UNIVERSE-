@@ -191,7 +191,7 @@ scene.add(galaxyHalo);
 const heartGeometry = new THREE.BufferGeometry();
 const heartPositions = [];
 
-const heartParticles = 6000;
+const heartParticles = 10000;
 
 for (let i = 0; i < heartParticles; i++) {
 
