@@ -106,29 +106,18 @@ const nebula = new THREE.Points(
 
 scene.add(nebula);
 nebula.scale.set(1.5, 1.1, 1.5);
-// Estrellas de fondo
+/// Estrellas de fondo
 const bgGeometry = new THREE.BufferGeometry();
-
 const bgPositions = [];
-const bgAngles = [];
-const bgRadii = [];
-const bgHeights = [];
 
 for (let i = 0; i < 3000; i++) {
 
-    const angle = Math.random() * Math.PI * 2;
-    const radius = 20 + Math.random() * 50;
-    const height = (Math.random() - 0.5) * 60;
-
-    bgAngles.push(angle);
-    bgRadii.push(radius);
-    bgHeights.push(height);
-
     bgPositions.push(
-        Math.cos(angle) * radius,
-        height,
-        Math.sin(angle) * radius
+        (Math.random() - 0.5) * 300,
+        (Math.random() - 0.5) * 300,
+        (Math.random() - 0.5) * 300
     );
+
 }
 
 bgGeometry.setAttribute(
@@ -151,6 +140,10 @@ const backgroundStars = new THREE.Points(
 );
 
 scene.add(backgroundStars);
+
+backgroundStars.rotation.x = 0.2;
+backgroundStars.rotation.z = 0.1;
+
 const coreParticlesGeometry = new THREE.BufferGeometry();
 const coreParticlesCount = 500;
 
