@@ -406,6 +406,9 @@ scene.add(orbitParticles);
 function animate() {
 
     requestAnimationFrame(animate);
+const twinkle = 0.75 + Math.sin(Date.now() * 0.003) * 0.25;
+
+stars.material.opacity = twinkle;
     
     stars.rotation.y += 0.0008;
 
