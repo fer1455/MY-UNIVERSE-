@@ -533,7 +533,7 @@ heart.rotation.y += 0.01;
   // Balanceo suave del corazón
 heart.position.x =
     Math.sin(Date.now() * 0.001) * 0.04;  
-
+    
     // Flotación suave del corazón
 heart.position.y =
     Math.sin(Date.now() * 0.0015) * 0.08;
@@ -550,6 +550,14 @@ dust.rotation.x += 0.00002;
     // Movimiento vertical del polvo
 dust.position.y = Math.sin(Date.now() * 0.0004) * 0.03;
 
+// Movimiento lateral del polvo
+dust.position.x =
+    Math.cos(Date.now() * 0.0003) * 0.04;
+
+    // Movimiento de profundidad del polvo
+dust.position.z =
+    Math.sin(Date.now() * 0.00025) * 0.03;
+                                 
     // Rotación suave de la galaxia
 stars.rotation.y += 0.00012;
 stars.rotation.x += 0.00002;
