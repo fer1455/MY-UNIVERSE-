@@ -405,6 +405,13 @@ scene.add(orbitParticles);
 // AnimaciÃ³n
 function animate() {
 
+    nebula.rotation.y += 0.00005;
+nebula.rotation.x += 0.00002;
+nebula.rotation.z += 0.00001;
+
+    nebula.position.x = Math.sin(Date.now() * 0.0003) * 0.08;
+nebula.position.y = Math.cos(Date.now() * 0.00025) * 0.05;
+
     requestAnimationFrame(animate);
 const twinkle = 0.75 + Math.sin(Date.now() * 0.003) * 0.25;
 
