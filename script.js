@@ -108,6 +108,42 @@ const stars = new THREE.Points(
 );
 
 scene.add(stars);
+// Polvo estelar
+const dustGeometry = new THREE.BufferGeometry();
+const dustPositions = [];
+
+for (let i = 0; i < 5000; i++) {
+
+    const angle = Math.random() * Math.PI * 2;
+    const radius = Math.random() * 14;
+
+    const x = Math.cos(angle) * radius;
+    const y = (Math.random() - 0.5) * 1.5;
+    const z = Math.sin(angle) * radius;
+
+    dustPositions.push(x, y, z);
+}
+
+dustGeometry.setAttribute(
+    "position",
+    new THREE.Float32BufferAttribute(dustPositions, 3)
+);
+
+const dustMaterial = new THREE.PointsMaterial({
+    color: 0xffffff,
+    size: 0.025,
+    transparent: true,
+    opacity: 0.35,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending
+});
+
+const dust = new THREE.Points(
+    dustGeometry,
+    dustMaterial
+);
+
+scene.add(dust);
 stars.scale.set(1.15, 1.15, 1.15);
 
 // Nebulosa
