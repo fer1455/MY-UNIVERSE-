@@ -523,9 +523,49 @@ coreGlow.scale.set(
 
 coreGlow.position.copy(galaxyCore.position);
 
-coreParticles.rotation.y += 0.0015;
+// Giro orbital orgánico de las partículas
+coreParticles.rotation.y +=
+    0.0015 + Math.sin(Date.now() * 0.0005) * 0.0003;
 coreParticles.rotation.x += 0.0005;
 
+// Giro orgánico en Z de las partículas
+coreParticles.rotation.z +=
+    0.0002 + Math.cos(Date.now() * 0.0004) * 0.00005;
+    
+// Flotación suave de las partículas del núcleo
+coreParticles.position.y =
+    Math.sin(Date.now() * 0.0004) * 0.025;
+
+    // Flotación horizontal de las partículas del núcleo
+coreParticles.position.x =
+    Math.cos(Date.now() * 0.00035) * 0.025;
+
+    // Movimiento de profundidad de las partículas del núcleo
+coreParticles.position.z =
+    Math.sin(Date.now() * 0.0003) * 0.025;
+// Brillo suave de las partículas del núcleo
+const coreParticleGlow =
+    0.65 + Math.sin(Date.now() * 0.002) * 0.25;
+
+coreParticles.material.opacity = coreParticleGlow;
+
+    // Tamaño pulsante de las partículas del núcleo
+const coreParticleSize =
+    0.045 + Math.sin(Date.now() * 0.0025) * 0.01;
+
+coreParticles.material.size = coreParticleSize;
+
+    // Cambio suave de color de las partículas
+const colorShift =
+    (Math.sin(Date.now() * 0.0004) + 1) / 2;
+
+coreParticles.material.color.setHSL(
+    0.82 + colorShift * 0.08,
+    1,
+    0.65
+);
+    
+    
 // Latido del corazón
 // const heartPulse =
 //     0.18 + Math.sin(Date.now() * 0.003) * 0.02;
@@ -551,6 +591,12 @@ const heartGlow =
     0.75 + Math.sin(Date.now() * 0.0025) * 0.15;
 
 heart.material.opacity = heartGlow;
+
+    // Respiración suave de las partículas del corazón
+const heartParticlePulse =
+    0.035 + Math.sin(Date.now() * 0.002) * 0.004;
+
+heart.material.size = heartParticlePulse;
 
     // Movimiento de la nebulosa
     nebula.rotation.y += 0.00005;
