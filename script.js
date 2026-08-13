@@ -529,6 +529,11 @@ heart.scale.set(
 );
 
 heart.rotation.y += 0.01;
+
+    // Flotación suave del corazón
+heart.position.y =
+    Math.sin(Date.now() * 0.0015) * 0.08;
+    
     // Movimiento de la nebulosa
     nebula.rotation.y += 0.00005;
 nebula.rotation.x += 0.00002;
