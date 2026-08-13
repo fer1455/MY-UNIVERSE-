@@ -530,6 +530,10 @@ heart.scale.set(
 
 heart.rotation.y += 0.01;
 
+    // Inclinación suave del corazón
+heart.rotation.z =
+    Math.sin(Date.now() * 0.0012) * 0.08;
+
   // Balanceo suave del corazón
 heart.position.x =
     Math.sin(Date.now() * 0.001) * 0.04;  
@@ -557,6 +561,24 @@ dust.position.x =
     // Movimiento de profundidad del polvo
 dust.position.z =
     Math.sin(Date.now() * 0.00025) * 0.03;
+
+    // Respiración suave de la nebulosa
+const nebulaPulse =
+    1 + Math.sin(Date.now() * 0.0005) * 0.025;
+
+nebula.scale.set(
+    nebulaPulse,
+    nebulaPulse,
+    nebulaPulse
+);
+
+    // Movimiento vertical adicional de la nebulosa
+nebula.position.y +=
+    Math.sin(Date.now() * 0.00015) * 0.02;
+
+// Desplazamiento horizontal suave de la nebulosa
+nebula.position.x =
+    Math.sin(Date.now() * 0.0002) * 0.12;
                                  
     // Rotación suave de la galaxia
 stars.rotation.y += 0.00012;
