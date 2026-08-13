@@ -144,6 +144,38 @@ scene.add(backgroundStars);
 backgroundStars.rotation.x = 0.2;
 backgroundStars.rotation.z = 0.1;
 
+// Núcleo de la galaxia
+const coreGeometry = new THREE.SphereGeometry(0.25, 32, 32);
+
+const coreMaterial = new THREE.MeshBasicMaterial({
+    color: 0xff66cc
+});
+
+const galaxyCore = new THREE.Mesh(
+    coreGeometry,
+    coreMaterial
+);
+
+scene.add(galaxyCore);
+
+// Brillo del núcleo
+const coreGlowGeometry = new THREE.SphereGeometry(0.8, 32, 32);
+
+const coreGlowMaterial = new THREE.MeshBasicMaterial({
+    color: 0xff66cc,
+    transparent: true,
+    opacity: 0.18,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false
+});
+
+const coreGlow = new THREE.Mesh(
+    coreGlowGeometry,
+    coreGlowMaterial
+);
+
+scene.add(coreGlow);
+
 const coreParticlesGeometry = new THREE.BufferGeometry();
 const coreParticlesCount = 500;
 
