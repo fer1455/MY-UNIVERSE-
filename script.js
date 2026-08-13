@@ -455,6 +455,8 @@ nebula.rotation.z += 0.00001;
 
     backgroundStars.material.opacity =
     0.8 + Math.sin(Date.now() * 0.001) * 0.2;
+
+    backgroundStars.position.z = Math.sin(Date.now() * 0.0002) * 2;
     // Latido del halo
     glow.scale.set(
         pulse * 1.6,
