@@ -528,11 +528,7 @@ heart.scale.set(
     heartPulse
 );
 
-// Brillo pulsante del corazón
-const heartBrightness =
-    0.85 + Math.sin(Date.now() * 0.004) * 0.15;
 
-heart.material.opacity = heartBrightness;
     // Variación suave del latido
 const heartBreath =
     1 + Math.sin(Date.now() * 0.0018) * 0.035;
@@ -638,16 +634,6 @@ const dustPulse =
     0.75 + Math.sin(Date.now() * 0.0015) * 0.25;
 
 dust.material.opacity = dustPulse;
-
-    // Respiración suave del polvo
-const dustScale =
-    1 + Math.sin(Date.now() * 0.0006) * 0.02;
-
-dust.scale.set(
-    dustScale,
-    dustScale,
-    dustScale
-);
 
     // Respiración suave de la nebulosa
 const nebulaPulse =
