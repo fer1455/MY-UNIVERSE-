@@ -587,9 +587,67 @@ camera.position.x =
 camera.position.y =
     Math.cos(Date.now() * 0.00012) * 0.02;
 
+    // Balanceo suave de la cámara
+camera.rotation.z =
+    Math.sin(Date.now() * 0.00012) * 0.003;
+
+    // Parpadeo suave de las estrellas de fondo
+const starPulse =
+    0.85 + Math.sin(Date.now() * 0.002) * 0.15;
+
+backgroundStars.material.opacity = starPulse;
+
+    // Respiración suave de las estrellas
+const backgroundPulse =
+    1 + Math.sin(Date.now() * 0.0004) * 0.015;
+
+backgroundStars.scale.set(
+    backgroundPulse,
+    backgroundPulse,
+    backgroundPulse
+);
+
+    // Pulso muy suave de las estrellas
+const starsSizePulse =
+    1 + Math.sin(Date.now() * 0.0007) * 0.02;
+
+backgroundStars.material.size =
+    0.04 * starsSizePulse;
+
+    // Movimiento suave de profundidad de las estrellas
+backgroundStars.position.z =
+    Math.sin(Date.now() * 0.00012) * 0.05;
+
+    // Giro suave de las estrellas de fondo
+backgroundStars.rotation.z += 0.00001;
+
+    // Balanceo suave de las estrellas
+backgroundStars.rotation.x =
+    Math.sin(Date.now() * 0.0001) * 0.03;
+
+    // Balanceo suave en Y de las estrellas
+backgroundStars.rotation.y =
+    Math.cos(Date.now() * 0.00012) * 0.03;
+
     // Movimiento de profundidad del polvo
 dust.position.z =
     Math.sin(Date.now() * 0.00025) * 0.03;
+
+    // Brillo suave del polvo
+const dustPulse =
+    0.75 + Math.sin(Date.now() * 0.0015) * 0.25;
+
+dust.material.opacity = dustPulse;
+
+    // Respiración suave del polvo
+const dustScale =
+    1 + Math.sin(Date.now() * 0.0006) * 0.02;
+
+dust.scale.set(
+    dustScale,
+    dustScale,
+    dustScale
+);
 
     // Respiración suave de la nebulosa
 const nebulaPulse =
