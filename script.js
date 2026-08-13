@@ -71,7 +71,7 @@ const stars = new THREE.Points(
 
 scene.add(stars);
 stars.scale.set(1.15, 1.15, 1.15);
-stars.rotation.y += 0.0008;
+
 // Nebulosa
 const nebulaGeometry = new THREE.BufferGeometry();
 
@@ -113,10 +113,14 @@ const bgPositions = [];
 
 for (let i = 0; i < 3000; i++) {
 
+    const theta = Math.random() * Math.PI * 2;
+    const phi = Math.acos(2 * Math.random() - 1);
+    const radius = 45 + Math.random() * 35;
+
     bgPositions.push(
-        (Math.random() - 0.5) * 300,
-        (Math.random() - 0.5) * 300,
-        (Math.random() - 0.5) * 300
+        radius * Math.sin(phi) * Math.cos(theta),
+        radius * Math.cos(phi),
+        radius * Math.sin(phi) * Math.sin(theta)
     );
 
 }
@@ -446,7 +450,7 @@ heart.rotation.y += 0.01;
 nebula.rotation.x += 0.00002;
 nebula.rotation.z += 0.00001;
 
-    backgroundStars.rotation.y += 0.0005;
+    backgroundStars.rotation.y += 0.0015;
     // Latido del halo
     glow.scale.set(
         pulse * 1.6,
