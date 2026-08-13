@@ -521,6 +521,22 @@ coreGlow.scale.set(
     pulse * 1.5
 );
 
+    // Brillo suave del halo del núcleo
+const glowOpacity =
+    0.14 + Math.sin(Date.now() * 0.0025) * 0.04;
+
+coreGlow.material.opacity = glowOpacity;
+
+    // Respiración suave del halo
+const glowBreath =
+    1 + Math.sin(Date.now() * 0.0018) * 0.04;
+
+coreGlow.scale.set(
+    pulse * 1.5 * glowBreath,
+    pulse * 1.5 * glowBreath,
+    pulse * 1.5 * glowBreath
+);
+
 coreGlow.position.copy(galaxyCore.position);
 
 // Giro orbital orgánico de las partículas
@@ -555,6 +571,13 @@ const coreParticleSize =
 
 coreParticles.material.size = coreParticleSize;
 
+    // Respiración luminosa de las partículas
+const particleBreath =
+    0.85 + Math.sin(Date.now() * 0.0017) * 0.15;
+
+coreParticles.material.opacity =
+    coreParticleGlow * particleBreath;
+
     // Cambio suave de color de las partículas
 const colorShift =
     (Math.sin(Date.now() * 0.0004) + 1) / 2;
@@ -564,8 +587,17 @@ coreParticles.material.color.setHSL(
     1,
     0.65
 );
-    
-    
+
+    // Expansión suave de las partículas del núcleo
+const coreOrbitPulse =
+    1 + Math.sin(Date.now() * 0.0008) * 0.035;
+
+coreParticles.scale.set(
+    coreOrbitPulse,
+    coreOrbitPulse,
+    coreOrbitPulse
+);
+
 // Latido del corazón
 // const heartPulse =
 //     0.18 + Math.sin(Date.now() * 0.003) * 0.02;
