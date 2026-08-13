@@ -546,6 +546,12 @@ heart.rotation.x =
 heart.rotation.z =
     Math.sin(Date.now() * 0.0012) * 0.08;
 
+    // Brillo suave del corazón
+const heartGlow =
+    0.75 + Math.sin(Date.now() * 0.0025) * 0.15;
+
+heart.material.opacity = heartGlow;
+
     // Movimiento de la nebulosa
     nebula.rotation.y += 0.00005;
 nebula.rotation.x += 0.00002;
