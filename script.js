@@ -534,6 +534,8 @@ heart.rotation.y += 0.01;
 nebula.rotation.x += 0.00002;
 nebula.rotation.z += 0.00001;
 
+    nebula.position.x = Math.sin(Date.now() * 0.0003) * 0.08;
+nebula.position.y = Math.cos(Date.now() * 0.00025) * 0.05;
     dust.rotation.y += 0.00008;
 dust.rotation.x += 0.00002;
     // Movimiento vertical del polvo
@@ -574,6 +576,8 @@ dust.material.opacity =
     galaxyHalo.rotation.y += 0.0003;
 galaxyHalo.rotation.x += 0.0001;
 
+    // Movimiento suave del halo
+glow.rotation.z += 0.00002;
     // Mostrar la escena
     renderer.render(
         scene,
