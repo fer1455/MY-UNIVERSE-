@@ -534,6 +534,12 @@ heart.rotation.y += 0.01;
 nebula.rotation.x += 0.00002;
 nebula.rotation.z += 0.00001;
 
+    dust.rotation.y += 0.00008;
+dust.rotation.x += 0.00002;
+    // Brillo del polvo estelar
+dust.material.opacity =
+    0.25 + Math.sin(Date.now() * 0.0015) * 0.10;
+    
     backgroundStars.rotation.y += 0.001;
     backgroundStars.rotation.x += 0.0001;
 
