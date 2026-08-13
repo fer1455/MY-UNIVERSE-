@@ -545,16 +545,10 @@ heart.rotation.x =
 heart.rotation.z =
     Math.sin(Date.now() * 0.0012) * 0.08;
 
-  // Balanceo suave del corazón
-heart.position.x =
-    Math.sin(Date.now() * 0.001) * 0.04;  
-    
-    // Flotación suave del corazón
-heart.position.y =
-    Math.sin(Date.now() * 0.0015) * 0.08;
-    // Movimiento de profundidad del corazón
-heart.position.z =
-    Math.sin(Date.now() * 0.0008) * 0.03;
+// Posición estable del corazón
+heart.position.x = 0;
+heart.position.y = 0;
+heart.position.z = 0;
     
     // Movimiento de la nebulosa
     nebula.rotation.y += 0.00005;
