@@ -513,7 +513,9 @@ galaxyCore.scale.set(
     pulse
 );
 
-coreGlow.rotation.y += 0.001;
+// Giro orgánico del halo
+coreGlow.rotation.y +=
+    0.001 + Math.sin(Date.now() * 0.0005) * 0.0001;;
 
 coreGlow.scale.set(
     pulse * 1.5,
@@ -572,9 +574,10 @@ coreParticles.position.y =
 coreParticles.position.x =
     Math.cos(Date.now() * 0.00035) * 0.025;
 
-    // Movimiento de profundidad de las partículas del núcleo
+// Movimiento de profundidad de las partículas del núcleo
 coreParticles.position.z =
-    Math.sin(Date.now() * 0.0003) * 0.025;
+    Math.sin(Date.now() * 0.0003) * 0.025 +
+    Math.cos(Date.now() * 0.0007) * 0.008;
 // Brillo suave de las partículas del núcleo
 const coreParticleGlow =
     0.65 + Math.sin(Date.now() * 0.002) * 0.25;
