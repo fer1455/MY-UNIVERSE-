@@ -536,6 +536,18 @@ nebula.rotation.z += 0.00001;
 
     dust.rotation.y += 0.00008;
 dust.rotation.x += 0.00002;
+    // Movimiento vertical del polvo
+dust.position.y = Math.sin(Date.now() * 0.0004) * 0.03;
+
+    // Parpadeo suave de las estrellas de fondo
+backgroundStars.material.opacity =
+    0.55 + Math.sin(Date.now() * 0.0012) * 0.15;
+    // Rotación suave de la galaxia
+stars.rotation.y += 0.00012;
+stars.rotation.x += 0.00002;
+
+    // Movimiento suave de profundidad
+stars.position.z = Math.sin(Date.now() * 0.00025) * 0.04;
     // Brillo del polvo estelar
 dust.material.opacity =
     0.25 + Math.sin(Date.now() * 0.0015) * 0.10;
