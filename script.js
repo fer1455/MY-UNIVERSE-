@@ -420,6 +420,14 @@ heart.scale.set(
 );
 
 scene.add(heart);
+
+// Mantener el corazón visible delante del núcleo
+heart.renderOrder = 10;
+
+if (heart.material) {
+    heart.material.depthTest = false;
+    heart.material.depthWrite = false;
+}
 // Corazón luminoso
 
 // Luz del núcleo
