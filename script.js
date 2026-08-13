@@ -541,6 +541,10 @@ heart.scale.multiplyScalar(heartBreath);
     
 heart.rotation.y += 0.01;
 
+    // Inclinación suave en X
+heart.rotation.x =
+    Math.sin(Date.now() * 0.001) * 0.05;
+
     // Inclinación suave del corazón
 heart.rotation.z =
     Math.sin(Date.now() * 0.0012) * 0.08;
@@ -561,6 +565,10 @@ heart.position.z =
 nebula.rotation.x += 0.00002;
 nebula.rotation.z += 0.00001;
 
+    // Oscilación suave de la nebulosa
+nebula.rotation.z =
+    Math.sin(Date.now() * 0.0002) * 0.02;
+
     nebula.position.x = Math.sin(Date.now() * 0.0003) * 0.08;
 nebula.position.y = Math.cos(Date.now() * 0.00025) * 0.05;
     dust.rotation.y += 0.00008;
@@ -571,6 +579,13 @@ dust.position.y = Math.sin(Date.now() * 0.0004) * 0.03;
 // Movimiento lateral del polvo
 dust.position.x =
     Math.cos(Date.now() * 0.0003) * 0.04;
+
+    // Movimiento suave de la cámara
+camera.position.x =
+    Math.sin(Date.now() * 0.00015) * 0.03;
+
+camera.position.y =
+    Math.cos(Date.now() * 0.00012) * 0.02;
 
     // Movimiento de profundidad del polvo
 dust.position.z =
