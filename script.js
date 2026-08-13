@@ -71,6 +71,7 @@ const stars = new THREE.Points(
 
 scene.add(stars);
 stars.scale.set(1.15, 1.15, 1.15);
+stars.rotation.y += 0.0008;
 // Nebulosa
 const nebulaGeometry = new THREE.BufferGeometry();
 
@@ -401,6 +402,8 @@ scene.add(orbitParticles);
 function animate() {
 
     requestAnimationFrame(animate);
+    
+    stars.rotation.y += 0.0008;
 
     // Giro del núcleo
 galaxyCore.rotation.y += 0.002;
