@@ -528,12 +528,6 @@ coreParticles.rotation.x += 0.0005;
 //     heartPulse
 // );
 
-    // Variación suave del latido
-const heartBreath =
-    1 + Math.sin(Date.now() * 0.0018) * 0.035;
-
-heart.scale.multiplyScalar(heartBreath);
-    
 heart.rotation.y += 0.01;
 
     // Inclinación suave en X
