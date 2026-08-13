@@ -56,11 +56,49 @@ galaxyGeometry.setAttribute(
     new THREE.Float32BufferAttribute(positions, 3)
 );
 
-const galaxyMaterial = new THREE.PointsMaterial({
-    color: 0xffb3ff,
-    size: 0.015,
+const galaxyMaterial = new THREE.ShaderMaterial({
+    uniforms: {
+        uColor: {
+            value: new THREE.Color(0xfb3fff)
+        }
+    },
+
+    vertexShader: `
+        void main() {
+
+            vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+
+            float variation = 0.7 +
+                fract(sin(dot(position.xy, vec2(12.9898, 78.233))) * 43758.5453) * 1.3;
+
+            gl_PointSize = variation * 1.8;
+
+            gl_Position = projectionMatrix * mvPosition;
+        }
+    `,
+
+    fragmentShader: `
+        uniform vec3 uColor;
+
+        void main() {
+
+            float distanceToCenter = distance(
+                gl_PointCoord,
+                vec2(0.5)
+            );
+
+            if (distanceToCenter > 0.5) discard;
+
+            float glow = 1.0 - distanceToCenter * 2.0;
+
+            gl_FragColor = vec4(
+                uColor,
+                glow * 0.9
+            );
+        }
+    `,
+
     transparent: true,
-    opacity: 0.9,
     depthWrite: false,
     blending: THREE.AdditiveBlending
 });
