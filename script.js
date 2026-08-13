@@ -530,6 +530,10 @@ heart.scale.set(
 
 heart.rotation.y += 0.01;
 
+  // Balanceo suave del corazón
+heart.position.x =
+    Math.sin(Date.now() * 0.001) * 0.04;  
+
     // Flotación suave del corazón
 heart.position.y =
     Math.sin(Date.now() * 0.0015) * 0.08;
