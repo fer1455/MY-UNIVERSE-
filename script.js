@@ -546,11 +546,6 @@ heart.rotation.x =
 heart.rotation.z =
     Math.sin(Date.now() * 0.0012) * 0.08;
 
-// Posición estable del corazón
-heart.position.x = 0;
-heart.position.y = 0;
-heart.position.z = 0;
-    
     // Movimiento de la nebulosa
     nebula.rotation.y += 0.00005;
 nebula.rotation.x += 0.00002;
