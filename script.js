@@ -541,9 +541,6 @@ dust.rotation.x += 0.00002;
     // Movimiento vertical del polvo
 dust.position.y = Math.sin(Date.now() * 0.0004) * 0.03;
 
-    // Parpadeo suave de las estrellas de fondo
-backgroundStars.material.opacity =
-    0.55 + Math.sin(Date.now() * 0.0012) * 0.15;
     // Rotación suave de la galaxia
 stars.rotation.y += 0.00012;
 stars.rotation.x += 0.00002;
