@@ -519,15 +519,14 @@ coreParticles.rotation.y += 0.0015;
 coreParticles.rotation.x += 0.0005;
 
 // Latido del corazón
-const heartPulse =
-    0.18 + Math.sin(Date.now() * 0.003) * 0.02;
+// const heartPulse =
+//     0.18 + Math.sin(Date.now() * 0.003) * 0.02;
 
-heart.scale.set(
-    heartPulse,
-    heartPulse,
-    heartPulse
-);
-
+// heart.scale.set(
+//     heartPulse,
+//     heartPulse,
+//     heartPulse
+// );
 
     // Variación suave del latido
 const heartBreath =
