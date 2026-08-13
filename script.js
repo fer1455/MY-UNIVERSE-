@@ -528,6 +528,17 @@ heart.scale.set(
     heartPulse
 );
 
+// Brillo pulsante del corazón
+const heartBrightness =
+    0.85 + Math.sin(Date.now() * 0.004) * 0.15;
+
+heart.material.opacity = heartBrightness;
+    // Variación suave del latido
+const heartBreath =
+    1 + Math.sin(Date.now() * 0.0018) * 0.035;
+
+heart.scale.multiplyScalar(heartBreath);
+    
 heart.rotation.y += 0.01;
 
     // Inclinación suave del corazón
@@ -541,6 +552,9 @@ heart.position.x =
     // Flotación suave del corazón
 heart.position.y =
     Math.sin(Date.now() * 0.0015) * 0.08;
+    // Movimiento de profundidad del corazón
+heart.position.z =
+    Math.sin(Date.now() * 0.0008) * 0.03;
     
     // Movimiento de la nebulosa
     nebula.rotation.y += 0.00005;
