@@ -539,6 +539,22 @@ coreGlow.scale.set(
 
 coreGlow.position.copy(galaxyCore.position);
 
+    // Oscilación suave del halo
+coreGlow.position.y =
+    galaxyCore.position.y +
+    Math.sin(Date.now() * 0.0007) * 0.025;
+
+    // Oscilación lateral suave del halo
+coreGlow.position.x =
+    galaxyCore.position.x +
+    Math.cos(Date.now() * 0.0006) * 0.025;
+
+    // Oscilación de profundidad del halo
+coreGlow.position.z =
+    galaxyCore.position.z +
+    Math.sin(Date.now() * 0.0005) * 0.02;
+
+
 // Giro orbital orgánico de las partículas
 coreParticles.rotation.y +=
     0.0015 + Math.sin(Date.now() * 0.0005) * 0.0003;
