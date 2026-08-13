@@ -58,7 +58,7 @@ galaxyGeometry.setAttribute(
 
 const galaxyMaterial = new THREE.PointsMaterial({
     color: 0xffb3ff,
-    size: 0.03,
+    size: 0.015,
     transparent: true,
     opacity: 0.9,
     depthWrite: false,
