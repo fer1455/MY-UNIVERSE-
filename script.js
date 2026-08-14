@@ -556,23 +556,29 @@ coreGlow.position.z =
     galaxyCore.position.z +
     Math.sin(Date.now() * 0.0005) * 0.02;
 
-
 // Giro orbital orgánico de las partículas
 coreParticles.rotation.y +=
     0.0015 + Math.sin(Date.now() * 0.0005) * 0.0003;
-coreParticles.rotation.x += 0.0005;
+// Giro orgánico en X de las partículas
+coreParticles.rotation.x +=
+    0.0005 + Math.cos(Date.now() * 0.0006) * 0.0001;
 
 // Giro orgánico en Z de las partículas
 coreParticles.rotation.z +=
-    0.0002 + Math.cos(Date.now() * 0.0004) * 0.00005;
+    0.0002 + Math.cos(Date.now() * 0.0008) * 0.00008;
     
 // Flotación suave de las partículas del núcleo
 coreParticles.position.y =
     Math.sin(Date.now() * 0.0004) * 0.025;
 
-    // Flotación horizontal de las partículas del núcleo
+    // Movimiento orbital suave de las partículas
+const orbitTime = Date.now();
+
 coreParticles.position.x =
-    Math.cos(Date.now() * 0.00035) * 0.025;
+    Math.cos(orbitTime * 0.00035) * 0.025;
+
+coreParticles.position.y =
+    Math.sin(orbitTime * 0.00035) * 0.025;
 
 // Movimiento de profundidad de las partículas del núcleo
 coreParticles.position.z =
@@ -607,14 +613,20 @@ coreParticles.material.color.setHSL(
     0.65
 );
 
-    // Expansión suave de las partículas del núcleo
+// Expansión y pulso de las partículas del núcleo
 const coreOrbitPulse =
     1 + Math.sin(Date.now() * 0.0008) * 0.035;
 
+const particleWave =
+    1 + Math.sin(Date.now() * 0.0011) * 0.015;
+
+const finalParticleScale =
+    coreOrbitPulse * particleWave;
+
 coreParticles.scale.set(
-    coreOrbitPulse,
-    coreOrbitPulse,
-    coreOrbitPulse
+    finalParticleScale,
+    finalParticleScale,
+    finalParticleScale
 );
 
 // Latido del corazón
