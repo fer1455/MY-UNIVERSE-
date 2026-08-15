@@ -781,16 +781,6 @@ backgroundStars.rotation.y =
 dust.position.z =
     Math.sin(Date.now() * 0.00025) * 0.03;
 
-    // Brillo suave del polvo
-const dustPulse =
-    0.75 + Math.sin(Date.now() * 0.0015) * 0.25;
-
-dust.material.opacity = dustPulse;
-
-    // Respiración suave de la nebulosa
-const nebulaPulse =
-    1 + Math.sin(Date.now() * 0.0005) * 0.025;
-
 nebula.scale.set(
     nebulaPulse,
     nebulaPulse,
