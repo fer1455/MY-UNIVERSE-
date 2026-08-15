@@ -588,16 +588,6 @@ coreParticles.position.z =
 const coreParticleGlow =
     0.65 + Math.sin(Date.now() * 0.002) * 0.25;
 
-// Tamaño vivo de las partículas del núcleo
-const coreParticleSize =
-    0.045 + Math.sin(Date.now() * 0.0025) * 0.01;
-
-const particleSpark =
-    1 + Math.sin(Date.now() * 0.004) * 0.12;
-
-coreParticles.material.size =
-    coreParticleSize * particleSpark;
-
     // Tamaño pulsante de las partículas del núcleo
 const coreParticleSize =
     0.045 + Math.sin(Date.now() * 0.0025) * 0.01;
