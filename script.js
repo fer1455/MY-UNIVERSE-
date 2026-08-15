@@ -588,7 +588,15 @@ coreParticles.position.z =
 const coreParticleGlow =
     0.65 + Math.sin(Date.now() * 0.002) * 0.25;
 
-coreParticles.material.opacity = coreParticleGlow;
+// Tamaño vivo de las partículas del núcleo
+const coreParticleSize =
+    0.045 + Math.sin(Date.now() * 0.0025) * 0.01;
+
+const particleSpark =
+    1 + Math.sin(Date.now() * 0.004) * 0.12;
+
+coreParticles.material.size =
+    coreParticleSize * particleSpark;
 
     // Tamaño pulsante de las partículas del núcleo
 const coreParticleSize =
@@ -600,8 +608,12 @@ coreParticles.material.size = coreParticleSize;
 const particleBreath =
     0.85 + Math.sin(Date.now() * 0.0017) * 0.15;
 
+// Destello suave de las partículas
+const particleTwinkle =
+    0.9 + Math.sin(Date.now() * 0.005) * 0.1;
+
 coreParticles.material.opacity =
-    coreParticleGlow * particleBreath;
+    coreParticleGlow * particleBreath * particleTwinkle;
 
     // Cambio suave de color de las partículas
 const colorShift =
@@ -662,17 +674,62 @@ const heartParticlePulse =
 heart.material.size = heartParticlePulse;
 
     // Movimiento de la nebulosa
-    nebula.rotation.y += 0.00005;
-nebula.rotation.x += 0.00002;
-nebula.rotation.z += 0.00001;
+    // Giro orgánico de la nebulosa
+nebula.rotation.y +=
+    0.00005 + Math.sin(Date.now() * 0.0004) * 0.00001;
+    
+// Inclinación orgánica de la nebulosa
+nebula.rotation.x +=
+    0.00002 + Math.cos(Date.now() * 0.00035) * 0.000008;
 
+// Giro orgánico en Z de la nebulosa
+nebula.rotation.z +=
+    0.00001 + Math.sin(Date.now() * 0.0005) * 0.000004;
     // Oscilación suave de la nebulosa
 nebula.rotation.z =
     Math.sin(Date.now() * 0.0002) * 0.02;
 
-    nebula.position.x = Math.sin(Date.now() * 0.0003) * 0.08;
+// Movimiento orgánico de la nebulosa en X
+const nebulaTime = Date.now();
+
+nebula.position.x =
+    Math.sin(nebulaTime * 0.0003) * 0.08 +
+    Math.cos(nebulaTime * 0.0007) * 0.015;
+    
 nebula.position.y = Math.cos(Date.now() * 0.00025) * 0.05;
+
+    // Oscilación lateral suave de la nebulosa
+nebula.position.z =
+    Math.sin(Date.now() * 0.0002) * 0.04;
+
+    // Respiración orgánica de la nebulosa
+const nebulaPulse =
+    1 + Math.sin(Date.now() * 0.00035) * 0.025;
+
+const nebulaWave =
+    1 + Math.cos(Date.now() * 0.0006) * 0.01;
+
+const nebulaScale =
+    nebulaPulse * nebulaWave;
+
+nebula.scale.set(
+    nebulaScale,
+    nebulaScale,
+    nebulaScale
+);
+
+    // Brillo orgánico de la nebulosa
+const nebulaGlow =
+    0.65 + Math.sin(Date.now() * 0.0012) * 0.15;
+
+const nebulaShimmer =
+    1 + Math.cos(Date.now() * 0.002) * 0.08;
+
+nebula.material.opacity =
+    nebulaGlow * nebulaShimmer;
+    
     dust.rotation.y += 0.00008;
+    
 dust.rotation.x += 0.00002;
     // Movimiento vertical del polvo
 dust.position.y = Math.sin(Date.now() * 0.0004) * 0.03;
