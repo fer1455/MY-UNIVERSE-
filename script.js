@@ -513,6 +513,25 @@ galaxyCore.scale.set(
     pulse
 );
 
+    // Halo luminoso del corazón
+const haloPulse =
+    1 + Math.sin(Date.now() * 0.003) * 0.18;
+
+coreGlow.scale.set(
+    haloPulse * 1.5,
+    haloPulse * 1.5,
+    haloPulse * 1.5
+);
+
+coreGlow.material.opacity =
+    0.12 + Math.sin(Date.now() * 0.003) * 0.05;
+
+    // Destello suave del núcleo
+const coreShine =
+    0.5 + Math.sin(Date.now() * 0.003) * 0.15;
+
+galaxyCore.material.opacity = coreShine;
+
 // Giro orgánico del halo
 coreGlow.rotation.y +=
     0.001 + Math.sin(Date.now() * 0.0005) * 0.0001;;
@@ -816,6 +835,24 @@ nebula.position.x =
     // Rotación suave de la galaxia
 stars.rotation.y += 0.00012;
 stars.rotation.x += 0.00002;
+
+    // Movimiento suave de las estrellas
+stars.rotation.z = Math.sin(Date.now() * 0.0002) * 0.03;
+stars.position.y = Math.sin(Date.now() * 0.0003) * 0.04;
+
+    // Movimiento de profundidad de las estrellas
+stars.position.z =
+    Math.sin(Date.now() * 0.00025) * 0.06;
+
+    // Ondulación suave de la galaxia
+stars.rotation.y +=
+    Math.sin(Date.now() * 0.00015) * 0.00002;
+
+    // Parpadeo suave de las estrellas
+const starGlow =
+    0.75 + Math.sin(Date.now() * 0.002) * 0.15;
+
+stars.material.opacity = starGlow;
 
     // Movimiento suave de profundidad
 stars.position.z = Math.sin(Date.now() * 0.00025) * 0.04;
