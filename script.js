@@ -526,6 +526,27 @@ coreGlow.scale.set(
 coreGlow.material.opacity =
     0.12 + Math.sin(Date.now() * 0.003) * 0.05;
 
+    // Rotación suave del halo
+coreGlow.rotation.y += 0.0008;
+coreGlow.rotation.x += 0.0003;
+
+    // Movimiento flotante del núcleo
+const floatY =
+    Math.sin(Date.now() * 0.0012) * 0.025;
+
+galaxyCore.position.y = floatY;
+coreGlow.position.y = floatY;
+
+    // Respiración suave del halo
+const haloBreath =
+    1 + Math.sin(Date.now() * 0.0015) * 0.08;
+
+coreGlow.scale.set(
+    haloBreath * 1.5,
+    haloBreath * 1.5,
+    haloBreath * 1.5
+);
+
     // Destello suave del núcleo
 const coreShine =
     0.5 + Math.sin(Date.now() * 0.003) * 0.15;
