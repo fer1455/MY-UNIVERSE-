@@ -728,6 +728,20 @@ dust.position.y = Math.sin(Date.now() * 0.0004) * 0.03;
 dust.position.x =
     Math.cos(Date.now() * 0.0003) * 0.04;
 
+   // Movimiento suave de profundidad del polvo
+dust.position.z =
+    Math.sin(Date.now() * 0.00025) * 0.02; 
+
+    // Respiración suave del polvo
+const dustScale =
+    1 + Math.sin(Date.now() * 0.0005) * 0.015;
+
+dust.scale.set(
+    dustScale,
+    dustScale,
+    dustScale
+);
+
     // Movimiento suave de la cámara
 camera.position.x =
     Math.sin(Date.now() * 0.00015) * 0.03;
