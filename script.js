@@ -721,6 +721,10 @@ nebula.material.opacity =
     dust.rotation.y += 0.00008;
     
 dust.rotation.x += 0.00002;
+
+// Giro suave del polvo en Z
+dust.rotation.z += 0.000015;
+    
     // Movimiento vertical del polvo
 dust.position.y = Math.sin(Date.now() * 0.0004) * 0.03;
 
