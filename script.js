@@ -494,6 +494,10 @@ nebula.rotation.z += 0.00001;
     nebula.position.x = Math.sin(Date.now() * 0.0003) * 0.08;
 nebula.position.y = Math.cos(Date.now() * 0.00025) * 0.05;
 
+    // Movimiento orbital suave de las estrellas del fondo
+backgroundStars.rotation.y += 0.00002;
+backgroundStars.rotation.x += 0.000005;
+
     requestAnimationFrame(animate);
 const twinkle = 0.75 + Math.sin(Date.now() * 0.003) * 0.25;
 
