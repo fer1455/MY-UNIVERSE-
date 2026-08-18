@@ -567,6 +567,13 @@ coreGlow.scale.set(
     pulse * 1.5
 );
 
+    // Brillo pulsante del núcleo
+const glowPulse = 0.18 + Math.sin(Date.now() * 0.003) * 0.06;
+
+if (coreGlow && coreGlow.material) {
+    coreGlow.material.opacity = glowPulse;
+}
+
     // Brillo suave del halo del núcleo
 const glowOpacity =
     0.14 + Math.sin(Date.now() * 0.0025) * 0.04;
