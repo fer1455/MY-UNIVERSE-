@@ -541,15 +541,6 @@ const floatY =
 galaxyCore.position.y = floatY;
 coreGlow.position.y = floatY;
 
-    // Respiración suave del halo
-const haloBreath =
-    1 + Math.sin(Date.now() * 0.0015) * 0.08;
-
-coreGlow.scale.set(
-    haloBreath * 1.5,
-    haloBreath * 1.5,
-    haloBreath * 1.5
-);
 
     // Destello suave del núcleo
 const coreShine =
@@ -561,24 +552,12 @@ galaxyCore.material.opacity = coreShine;
 coreGlow.rotation.y +=
     0.001 + Math.sin(Date.now() * 0.0005) * 0.0001;;
 
-coreGlow.scale.set(
-    pulse * 1.5,
-    pulse * 1.5,
-    pulse * 1.5
-);
-
     // Brillo pulsante del núcleo
 const glowPulse = 0.18 + Math.sin(Date.now() * 0.003) * 0.06;
 
 if (coreGlow && coreGlow.material) {
     coreGlow.material.opacity = glowPulse;
 }
-
-    // Brillo suave del halo del núcleo
-const glowOpacity =
-    0.14 + Math.sin(Date.now() * 0.0025) * 0.04;
-
-coreGlow.material.opacity = glowOpacity;
 
     // Respiración suave del halo
 const glowBreath =
@@ -849,12 +828,6 @@ backgroundStars.rotation.y =
     // Movimiento de profundidad del polvo
 dust.position.z =
     Math.sin(Date.now() * 0.00025) * 0.03;
-
-nebula.scale.set(
-    nebulaPulse,
-    nebulaPulse,
-    nebulaPulse
-);
 
     // Movimiento vertical adicional de la nebulosa
 nebula.position.y +=
