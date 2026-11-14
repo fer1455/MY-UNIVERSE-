@@ -285,63 +285,6 @@ galaxyGroup.add(coreLight);
 // PARTÍCULAS ORBITALES
 // =====================================
 
-// ❤️ CORAZÓN 3D FORMADO POR PARTÍCULAS
-const heartCount = 5000;
-const heartGeometry = new THREE.BufferGeometry();
-const heartPositions = [];
-const heartColors = [];
-
-const heartColor1 = new THREE.Color("#ff4fa3");
-const heartColor2 = new THREE.Color("#ffb6e6");
-
-for (let i = 0; i < heartCount; i++) {
-    const t = Math.random() * Math.PI * 2;
-
-    // Forma matemática del corazón
-    const x = 16 * Math.pow(Math.sin(t), 3);
-    const y = 13 * Math.cos(t)
-        - 5 * Math.cos(2 * t)
-        - 2 * Math.cos(3 * t)
-        - Math.cos(4 * t);
-
-    const fill = Math.sqrt(Math.random());
-
-    heartPositions.push(
-        x * 0.12 * fill,
-        y * 0.12 * fill,
-        (Math.random() - 0.5) * 0.7
-    );
-
-    const color = heartColor1.clone().lerp(
-        heartColor2,
-        Math.random()
-    );
-
-    heartColors.push(color.r, color.g, color.b);
-}
-
-heartGeometry.setAttribute(
-    "position",
-    new THREE.Float32BufferAttribute(heartPositions, 3)
-);
-
-heartGeometry.setAttribute(
-    "color",
-    new THREE.Float32BufferAttribute(heartColors, 3)
-);
-
-const heartMaterial = new THREE.PointsMaterial({
-    size: 0.055,
-    vertexColors: true,
-    transparent: true,
-    opacity: 0.95,
-    depthWrite: false,
-    blending: THREE.AdditiveBlending
-});
-
-const heart = new THREE.Points(heartGeometry, heartMaterial);
-galaxyGroup.add(heart);
-
 const orbitGeometry = new THREE.BufferGeometry();
 
 const orbitPositions = [];
@@ -396,12 +339,6 @@ function animate() {
 
     // Giro lento de la galaxia
     galaxyGroup.rotation.y = time * 0.025;
-
-    heart.rotation.y = Math.sin(time * 0.5) * 0.12;
-heart.rotation.x = Math.sin(time * 0.7) * 0.04;
-
-const heartPulse = 1 + Math.sin(time * 2) * 0.035;
-heart.scale.setScalar(heartPulse);
 
     // Giro del polvo estelar
     dust.rotation.y = time * 0.012;
